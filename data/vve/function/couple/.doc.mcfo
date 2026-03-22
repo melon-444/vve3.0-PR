@@ -1,0 +1,8 @@
+#vve:couple/doc.mcfo
+
+# couple临时对象
+_this:{
+	<couple_x,int,1w>,
+	<couple_y,int,1w>,
+	<couple_z,int,1w>
+}

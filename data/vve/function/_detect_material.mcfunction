@@ -12,7 +12,7 @@ scoreboard players set friction_response int 10000
 scoreboard players set grab_layer_response int 0
 scoreboard players set bounce_layer_response int 0
 
-particle flame
+#particle flame
 #return run function vve:cpoint/_render_debug
 
 # 检测不同介质
