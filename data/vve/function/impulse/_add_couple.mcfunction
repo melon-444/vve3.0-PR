@@ -21,6 +21,7 @@ scoreboard players operation fvec_z int = impulse_fz int
 # 计算叉乘
 function math:vec/_cross_fvec_high
 
+#tellraw @a ["vec: ",{"score":{"name":"vec_x","objective":"int"}},", ",{"score":{"name":"vec_y","objective":"int"}},", ",{"score":{"name":"vec_z","objective":"int"}}]
 scoreboard players operation couple_x int += vec_x int
 scoreboard players operation couple_y int += vec_y int
 scoreboard players operation couple_z int += vec_z int

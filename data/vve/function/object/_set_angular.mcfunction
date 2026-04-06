@@ -32,12 +32,12 @@ execute if score uvec_y int matches ..-1 run scoreboard players operation sstemp
 execute if score uvec_z int matches 1.. run scoreboard players operation sstempd int += uvec_z int
 execute if score uvec_z int matches ..-1 run scoreboard players operation sstempd int -= uvec_z int
 
-execute store result score sstemp_mod int run scoreboard players operation angular_len int *= 100 int
+scoreboard players operation sstemp_mod int = angular_len int
 scoreboard players operation angular_len int /= sstempd int
 scoreboard players operation sstemp_mod int %= sstempd int
-scoreboard players operation sstemp_mod int *= 100 int
+scoreboard players operation sstemp_mod int *= 10000 int
 scoreboard players operation sstemp_mod int /= sstempd int
-scoreboard players operation angular_len int *= 100 int
+scoreboard players operation angular_len int *= 10000 int
 scoreboard players operation angular_len int += sstemp_mod int
 
 # 当前姿态设置为旋转初始姿态
