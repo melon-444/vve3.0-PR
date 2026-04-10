@@ -1,6 +1,9 @@
 #vve:object/_dec_impulse
 # 接收并分解冲量响应
+# 输入{<x,int,1w>,<y,int,1w>,<z,int,1w>}
 # 迭代receiver{...}
+# 迭代couple{...}
+# 输出<couple_response,int>
 
 scoreboard players add impulse_receiver_response int 1
 

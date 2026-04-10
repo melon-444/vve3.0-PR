@@ -1,0 +1,11 @@
+#vve:tensor/doc.mcfo
+
+# tensor临时对象
+_this:{
+	<tensor_xx,int,100>,
+	<tensor_yy,int,100>,
+	<tensor_zz,int,100>,
+	<tensor_xy,int,100>,
+	<tensor_xz,int,100>,
+	<tensor_yz,int,100>
+}
