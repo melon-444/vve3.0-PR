@@ -12,3 +12,4 @@ function vve:point/init
 function vve:block/init
 function vve:object/init
 function vve:friction/init
+function vve:cube/init
