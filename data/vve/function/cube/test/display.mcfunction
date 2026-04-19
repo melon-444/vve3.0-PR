@@ -4,10 +4,10 @@ function vve:cube/init
 
 execute as @e[tag=vve_cube,tag=test] run function vve:cube/_del
 function vve:cube/_zero
-execute positioned 193 -53 53 rotated 0.0 0.0 as 0-0-0-0-0 run function vve:object/_anchor_to
-scoreboard players set scale_u int 10000
+execute positioned 193 -56 53 rotated 45.0 0.0 as 0-0-0-0-0 run function vve:object/_anchor_to
+scoreboard players set scale_u int 40000
 scoreboard players set scale_v int 10000
-scoreboard players set scale_w int 20000
+scoreboard players set scale_w int 40000
 function vve:cube/_model
 data modify storage vve:io input set from storage vve:io result
 execute positioned 193 -53 53 run function vve:cube/_new

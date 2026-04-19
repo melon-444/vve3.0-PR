@@ -1,6 +1,9 @@
 #vve:_init
 # 初始化vve3.0
 
+# 创建记分板
+scoreboard objectives add vve_material_type dummy
+
 # 设置常量
 scoreboard players set 408 int 408
 scoreboard players set 577 int 577

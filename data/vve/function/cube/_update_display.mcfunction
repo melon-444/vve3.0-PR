@@ -31,7 +31,7 @@ execute store result storage math:io xyzw[3] float 0.0001 run scoreboard players
 data modify storage vve:io result.transformation.left_rotation set from storage math:io xyzw
 
 data modify storage math:io translation set value [0.0f,0.0f,0.0f]
-execute store result storage math:io translation[1] float -0.00005 run scoreboard players get sstemp_abs int
+execute store result storage math:io translation[1] float -0.00005 run scoreboard players get sstemp_max int
 data modify storage vve:io result.transformation.translation set from storage math:io translation
 
 execute on passengers run data modify entity @s {} merge from storage vve:io result

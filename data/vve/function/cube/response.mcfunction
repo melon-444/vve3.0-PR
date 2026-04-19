@@ -1,54 +1,54 @@
-#vve:_detect_material
-# 介质探测
-# 输入执行位置
-# 输入cpoint{...}
-# 输出介质响应(各模块的临时对象)
-# 传入世界实体为执行者(不保证Pos位于执行位置)
+#vve:cube/response
+# vve:cube/check_material调用
 
-# 各模块响应信号重置
-scoreboard players set shift_response int 0
-scoreboard players set impulse_response int 0
-scoreboard players set friction_response int 10000
-scoreboard players set grab_layer_response int 0
-scoreboard players set bounce_layer_response int 0
-scoreboard players set material_response int 0
+# 响应信号
+scoreboard players set material_response int 1
 
-#particle flame
-#return run function vve:cpoint/_render_debug
+# 获取坐标
+scoreboard players operation u int /= 10000 int
+scoreboard players operation v int /= 10000 int
+scoreboard players operation w int /= 10000 int
 
-# 检测不同介质
+# 获取边长一半
+scoreboard players operation sstemp_s0 int = @s scale_u
+scoreboard players operation sstemp_s1 int = @s scale_v
+scoreboard players operation sstemp_s2 int = @s scale_w
+scoreboard players operation sstemp_s0 int /= 2 int
+scoreboard players operation sstemp_s1 int /= 2 int
+scoreboard players operation sstemp_s2 int /= 2 int
 
-# 补充非方块介质
-# ...
-execute as @e[tag=vve_material_box,dx=0,dy=0,dz=0] positioned ~-0.9999 ~-0.9999 ~-0.9999 if entity @s[dx=0,dy=0,dz=0] run function vve:call_material
-execute if score material_response int matches 1.. run return fail
+# 判断到各面距离
+scoreboard players set sstemp_sign_u int 1
+execute if score u int matches ..-1 run scoreboard players set sstemp_sign_u int -1
+scoreboard players operation sstemp_abs_u int = u int
+scoreboard players operation sstemp_abs_u int *= sstemp_sign_u int
 
-# 空气介质
-execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
+scoreboard players set sstemp_sign_v int 1
+execute if score v int matches ..-1 run scoreboard players set sstemp_sign_v int -1
+scoreboard players operation sstemp_abs_v int = v int
+scoreboard players operation sstemp_abs_v int *= sstemp_sign_v int
 
-# 补充其它方块介质
-# ...
+scoreboard players set sstemp_sign_w int 1
+execute if score w int matches ..-1 run scoreboard players set sstemp_sign_w int -1
+scoreboard players operation sstemp_abs_w int = w int
+scoreboard players operation sstemp_abs_w int *= sstemp_sign_w int
 
-# 实心介质
-scoreboard players operation stemp_x int = c_x int
-scoreboard players operation stemp_y int = c_y int
-scoreboard players operation stemp_z int = c_z int
-scoreboard players operation stemp_x int %= 10000 int
-scoreboard players operation stemp_y int %= 10000 int
-scoreboard players operation stemp_z int %= 10000 int
-scoreboard players set stemp_rx int 0
-scoreboard players set stemp_ry int 0
-scoreboard players set stemp_rz int 0
-execute if score stemp_x int matches 0..4999 unless block ~-1 ~ ~ #vve:pass run scoreboard players set stemp_rx int -1
-execute if score stemp_x int matches 5000.. unless block ~1 ~ ~ #vve:pass run scoreboard players set stemp_rx int 1
-execute if score stemp_y int matches 0..4999 unless block ~ ~-1 ~ #vve:pass run scoreboard players set stemp_ry int -1
-execute if score stemp_y int matches 5000.. unless block ~ ~1 ~ #vve:pass run scoreboard players set stemp_ry int 1
-execute if score stemp_z int matches 0..4999 unless block ~ ~ ~-1 #vve:pass run scoreboard players set stemp_rz int -1
-execute if score stemp_z int matches 5000.. unless block ~ ~ ~1 #vve:pass run scoreboard players set stemp_rz int 1
-execute store result storage vve:io rx int 1 run scoreboard players get stemp_rx int
-execute store result storage vve:io ry int 1 run scoreboard players get stemp_ry int
-execute store result storage vve:io rz int 1 run scoreboard players get stemp_rz int
-function vve:solid/search with storage vve:io {}
+scoreboard players operation sstemp_abs_u int *= -1 int
+scoreboard players operation sstemp_abs_v int *= -1 int
+scoreboard players operation sstemp_abs_w int *= -1 int
+scoreboard players operation sstemp_abs_u int += sstemp_s0 int
+scoreboard players operation sstemp_abs_v int += sstemp_s1 int
+scoreboard players operation sstemp_abs_w int += sstemp_s2 int
+
+#scoreboard players set test int 1
+#tellraw @a "---"
+#tellraw @a ["sstemp_abs_u: ", {"score":{"name":"sstemp_abs_u","objective":"int"}}]
+#tellraw @a ["sstemp_abs_v: ", {"score":{"name":"sstemp_abs_v","objective":"int"}}]
+#tellraw @a ["sstemp_abs_w: ", {"score":{"name":"sstemp_abs_w","objective":"int"}}]
+
+execute if score sstemp_abs_u int <= sstemp_abs_v int run function vve:cube/response_branch_0
+execute if score sstemp_abs_u int > sstemp_abs_v int run function vve:cube/response_branch_1
+
 # 计算沿法线反方向的速度
 scoreboard players operation stemp_v int = c_vx int
 scoreboard players operation stemp_v int *= nvec_x int
