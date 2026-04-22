@@ -19,6 +19,7 @@ function math:rquat/_to_quat
 # 转换为世界坐标系
 function math:quat/_mult
 function math:rquat/_to_quat
+function math:quat/_touvw
 
 scoreboard players operation angular_x int /= 100 int
 scoreboard players operation angular_y int /= 100 int
