@@ -25,4 +25,4 @@ tag @e[tag=result,limit=1] add entity_todel
 scoreboard players set @e[tag=result,limit=1] killtime 20
 scoreboard players set test int -1
 
-execute positioned 193 -53 53 positioned ~15 ~15 ~15 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as
+#execute positioned 193 -53 53 positioned ~15 ~15 ~15 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as
