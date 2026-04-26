@@ -135,3 +135,7 @@ scoreboard players operation impulse_fz int *= c_mass int
 scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
+
+execute unless entity @s[tag=vve_impulse_receiver] run return fail
+function vve:impulse/_model
+data modify entity @s data.impulse_receiver append from storage vve:io result

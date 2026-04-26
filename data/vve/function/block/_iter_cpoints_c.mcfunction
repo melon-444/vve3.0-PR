@@ -270,7 +270,7 @@ execute if score impulse_response int matches 1 run function vve:object/_dec_imp
 
 # 结束接受介质响应
 function vve:object/_receive_over
-#function vve:couple/_add_over
+function vve:couple/_add_over
 
 # 区块安全
 tp @s 0 0 0
