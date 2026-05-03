@@ -1,7 +1,6 @@
 #vve:grab_layer/response
 # vve:_detect_material调用
 # vve:_detect_solid调用
-# vve:cube/response调用
 
 # 摩擦响应
 scoreboard players operation friction_response int = vve_grab_friction int

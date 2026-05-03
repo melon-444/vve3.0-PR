@@ -6,6 +6,9 @@ _this:{
 	mass:<mass,int,1>,
 	inertia:<inertia,int,100>,
 	cube_shift_y:<cube_shift_y,int,1w>,
+	nvec:{
+		<nvec_x,int,1w>,<nvec_y,int,1w>,<nvec_z,int,1w>
+	},
 	scale:{
 		<scale_u,int,1w>,<scale_v,int,1w>,<scale_w,int,1w>
 	},

@@ -10,6 +10,10 @@ function vve:cublock/_model
 data modify storage vve:io input set from storage vve:io result
 execute positioned 193 -53 53 run function vve:cublock/_new
 execute as @e[tag=result,limit=1] on passengers run item replace entity @s container.0 with minecraft:ochre_froglight
+#tag @e[tag=result,limit=1] remove vve_impulse_receiver
+
+kill @e[tag=test_tracker]
+summon marker 0 0 0 {Tags:["test_tracker"],CustomName:"test_tracker"}
 
 execute as @e[tag=result,limit=1] run function marker_control:data/_get
 
@@ -25,4 +29,4 @@ tag @e[tag=result,limit=1] add entity_todel
 scoreboard players set @e[tag=result,limit=1] killtime 20
 scoreboard players set test int -1
 
-#execute positioned 193 -53 53 positioned ~15 ~15 ~15 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as
+execute positioned 193 -53 53 positioned ~5 ~5 ~5 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as

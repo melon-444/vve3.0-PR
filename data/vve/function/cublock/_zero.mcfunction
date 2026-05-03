@@ -5,6 +5,9 @@ scoreboard players set a int 0
 scoreboard players set mass int 0
 scoreboard players set inertia int 0
 scoreboard players set cube_shift_y int 0
+scoreboard players set nvec_x int 0
+scoreboard players set nvec_y int 0
+scoreboard players set nvec_z int 0
 scoreboard players set scale_u int 0
 scoreboard players set scale_v int 0
 scoreboard players set scale_w int 0

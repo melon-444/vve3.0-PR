@@ -1,3 +1,3 @@
 #vve:cublock/tick
 
-execute as @e[tag=cublock] run function vve:cublock/main
+execute as @e[tag=vve_cublock] run function vve:cublock/main

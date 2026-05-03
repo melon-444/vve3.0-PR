@@ -4,4 +4,4 @@
 function vve:cublock/_get
 function vve:cublock/_update_display
 
-scoreboard players set @s vve_material_type 1
+scoreboard players set @s vve_material_type 2

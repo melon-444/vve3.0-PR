@@ -60,7 +60,9 @@ scoreboard players operation stemp_0 int *= nvec_z int
 scoreboard players operation stemp_v int += stemp_0 int
 scoreboard players operation stemp_v int /= -10000 int
 # 附着层响应
-execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response
+execute if score grab_depth int <= grab_depth_max int \
+	if score stemp_v int <= grab_layer_v int \
+	run return run function vve:cube/grab_layer_response
 # 实心层反弹
 scoreboard players set bounce_layer_response int 1
 # 取消附着层响应

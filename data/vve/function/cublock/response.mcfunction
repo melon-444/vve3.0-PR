@@ -1,0 +1,178 @@
+#vve:cublock/response
+# vve:cublock/check_material调用
+
+#say receive
+
+# 响应信号
+scoreboard players set material_response int 2
+
+# 获取坐标
+scoreboard players operation u int /= 10000 int
+scoreboard players operation v int /= 10000 int
+scoreboard players operation w int /= 10000 int
+
+# 速度转换局部坐标
+execute store result score stemp_v0 int store result score stemp_v1 int store result score stemp_v2 int run scoreboard players get c_vx int
+execute store result score sstemp_u1 int store result score sstemp_v1 int store result score sstemp_w1 int run scoreboard players get c_vy int
+execute store result score sstemp_u2 int store result score sstemp_v2 int store result score sstemp_w2 int run scoreboard players get c_vz int
+scoreboard players operation stemp_v0 int *= @s ivec_x
+scoreboard players operation sstemp_u1 int *= @s ivec_y
+scoreboard players operation stemp_v0 int += sstemp_u1 int
+scoreboard players operation sstemp_u2 int *= @s ivec_z
+scoreboard players operation stemp_v0 int += sstemp_u2 int
+scoreboard players operation stemp_v1 int *= @s jvec_x
+scoreboard players operation sstemp_v1 int *= @s jvec_y
+scoreboard players operation stemp_v1 int += sstemp_v1 int
+scoreboard players operation sstemp_v2 int *= @s jvec_z
+scoreboard players operation stemp_v1 int += sstemp_v2 int
+scoreboard players operation stemp_v2 int *= @s kvec_x
+scoreboard players operation sstemp_w1 int *= @s kvec_y
+scoreboard players operation stemp_v2 int += sstemp_w1 int
+scoreboard players operation sstemp_w2 int *= @s kvec_z
+scoreboard players operation stemp_v2 int += sstemp_w2 int
+scoreboard players operation stemp_v0 int /= 10000 int
+scoreboard players operation stemp_v1 int /= 10000 int
+scoreboard players operation stemp_v2 int /= 10000 int
+
+# 获取边长一半
+scoreboard players operation sstemp_s0 int = @s scale_u
+scoreboard players operation sstemp_s1 int = @s scale_v
+scoreboard players operation sstemp_s2 int = @s scale_w
+scoreboard players operation sstemp_s0 int /= 2 int
+scoreboard players operation sstemp_s1 int /= 2 int
+scoreboard players operation sstemp_s2 int /= 2 int
+
+scoreboard players operation sstemp_r0 int = sstemp_s0 int
+scoreboard players operation sstemp_r1 int = sstemp_s1 int
+scoreboard players operation sstemp_r2 int = sstemp_s2 int
+scoreboard players operation sstemp_r0 int *= -1 int
+scoreboard players operation sstemp_r1 int *= -1 int
+scoreboard players operation sstemp_r2 int *= -1 int
+
+# 考虑速度射入方向
+#tellraw @a ["uvw: ",{"score":{"name":"u","objective":"int"}},", ",{"score":{"name":"v","objective":"int"}},", ",{"score":{"name":"w","objective":"int"}}]
+#tellraw @a ["stemp_v: ",{"score":{"name":"stemp_v0","objective":"int"}},", ",{"score":{"name":"stemp_v1","objective":"int"}},", ",{"score":{"name":"stemp_v2","objective":"int"}}]
+scoreboard players operation u int -= stemp_v0 int
+scoreboard players operation v int -= stemp_v1 int
+scoreboard players operation w int -= stemp_v2 int
+scoreboard players operation u int < sstemp_s0 int
+scoreboard players operation v int < sstemp_s1 int
+scoreboard players operation w int < sstemp_s2 int
+scoreboard players operation u int > sstemp_r0 int
+scoreboard players operation v int > sstemp_r1 int
+scoreboard players operation w int > sstemp_r2 int
+
+#tellraw @a ["uvw: ",{"score":{"name":"u","objective":"int"}},", ",{"score":{"name":"v","objective":"int"}},", ",{"score":{"name":"w","objective":"int"}}]
+
+# 判断到各面距离
+scoreboard players set sstemp_sign_u int 1
+execute if score u int matches ..-1 run scoreboard players set sstemp_sign_u int -1
+scoreboard players operation sstemp_abs_u int = u int
+scoreboard players operation sstemp_abs_u int *= sstemp_sign_u int
+
+scoreboard players set sstemp_sign_v int 1
+execute if score v int matches ..-1 run scoreboard players set sstemp_sign_v int -1
+scoreboard players operation sstemp_abs_v int = v int
+scoreboard players operation sstemp_abs_v int *= sstemp_sign_v int
+
+scoreboard players set sstemp_sign_w int 1
+execute if score w int matches ..-1 run scoreboard players set sstemp_sign_w int -1
+scoreboard players operation sstemp_abs_w int = w int
+scoreboard players operation sstemp_abs_w int *= sstemp_sign_w int
+
+scoreboard players operation sstemp_abs_u int *= -1 int
+scoreboard players operation sstemp_abs_v int *= -1 int
+scoreboard players operation sstemp_abs_w int *= -1 int
+scoreboard players operation sstemp_abs_u int += sstemp_s0 int
+scoreboard players operation sstemp_abs_v int += sstemp_s1 int
+scoreboard players operation sstemp_abs_w int += sstemp_s2 int
+
+execute if score sstemp_abs_u int <= sstemp_abs_v int run function vve:cube/response_branch_0
+execute if score sstemp_abs_u int > sstemp_abs_v int run function vve:cube/response_branch_1
+
+# 计算沿法向反方向的速度1
+scoreboard players operation stemp_u int = @s vx
+scoreboard players operation stemp_u int *= nvec_x int
+scoreboard players operation stemp_0 int = @s vy
+scoreboard players operation stemp_0 int *= nvec_y int
+scoreboard players operation stemp_u int += stemp_0 int
+scoreboard players operation stemp_0 int = @s vz
+scoreboard players operation stemp_0 int *= nvec_z int
+scoreboard players operation stemp_u int += stemp_0 int
+scoreboard players operation stemp_u int /= -10000 int
+
+# 计算沿法线反方向的速度2
+scoreboard players operation stemp_v int = c_vx int
+scoreboard players operation stemp_v int *= nvec_x int
+scoreboard players operation stemp_0 int = c_vy int
+scoreboard players operation stemp_0 int *= nvec_y int
+scoreboard players operation stemp_v int += stemp_0 int
+scoreboard players operation stemp_0 int = c_vz int
+scoreboard players operation stemp_0 int *= nvec_z int
+scoreboard players operation stemp_v int += stemp_0 int
+scoreboard players operation stemp_v int /= -10000 int
+
+#tellraw @a ["c_v: ",{"score":{"name":"c_vx","objective":"int"}},", ",{"score":{"name":"c_vy","objective":"int"}},", ",{"score":{"name":"c_vz","objective":"int"}}]
+#scoreboard players set test int 1
+#function math:nvec/_print
+#tellraw @a ["stemp_u: ", {"score":{"name":"stemp_u","objective":"int"}}]
+#tellraw @a ["stemp_v: ", {"score":{"name":"stemp_v","objective":"int"}}]
+scoreboard players operation stemp_v int -= stemp_u int
+scoreboard players operation stemp_v int > 0 int
+
+# 实心层反弹
+scoreboard players set bounce_layer_response int 1
+# 取消附着层响应
+scoreboard players set grab_layer_response int 0
+
+# 摩擦响应
+scoreboard players operation friction_response int = vve_solid_friction int
+
+# 位移至特定深度
+scoreboard players set shift_response int 1
+scoreboard players operation stemp_depth int = grab_depth int
+scoreboard players operation stemp_depth int += grab_depth_mid int
+scoreboard players operation shift_x int = nvec_x int
+scoreboard players operation shift_y int = nvec_y int
+scoreboard players operation shift_z int = nvec_z int
+scoreboard players operation shift_x int *= stemp_depth int
+scoreboard players operation shift_y int *= stemp_depth int
+scoreboard players operation shift_z int *= stemp_depth int
+scoreboard players operation shift_x int /= 10000 int
+scoreboard players operation shift_y int /= 10000 int
+scoreboard players operation shift_z int /= 10000 int
+
+# 施加反弹冲量
+scoreboard players set impulse_response int 1
+scoreboard players operation impulse_x int = c_x int
+scoreboard players operation impulse_y int = c_y int
+scoreboard players operation impulse_z int = c_z int
+scoreboard players operation impulse_fx int = nvec_x int
+scoreboard players operation impulse_fy int = nvec_y int
+scoreboard players operation impulse_fz int = nvec_z int
+scoreboard players operation impulse_fx int *= stemp_v int
+scoreboard players operation impulse_fy int *= stemp_v int
+scoreboard players operation impulse_fz int *= stemp_v int
+scoreboard players operation impulse_fx int /= vve_solid_bounce_inv int
+scoreboard players operation impulse_fy int /= vve_solid_bounce_inv int
+scoreboard players operation impulse_fz int /= vve_solid_bounce_inv int
+scoreboard players operation stemp_mass int = c_mass int
+scoreboard players operation stemp_mass int *= @s mass
+scoreboard players operation stemp_div int = c_mass int
+scoreboard players operation stemp_div int += @s mass
+scoreboard players operation stemp_mass int /= stemp_div int
+scoreboard players operation impulse_fx int *= stemp_mass int
+scoreboard players operation impulse_fy int *= stemp_mass int
+scoreboard players operation impulse_fz int *= stemp_mass int
+
+execute unless entity @s[tag=vve_impulse_receiver] run return fail
+execute if entity @s[tag=vve_surface] run return run function vve:cublock/return_impulse
+scoreboard players operation impulse_fx int *= -1 int
+scoreboard players operation impulse_fy int *= -1 int
+scoreboard players operation impulse_fz int *= -1 int
+function vve:impulse/_model
+data modify entity @s data.impulse_receiver append from storage vve:io result
+
+scoreboard players operation impulse_fx int *= -1 int
+scoreboard players operation impulse_fy int *= -1 int
+scoreboard players operation impulse_fz int *= -1 int

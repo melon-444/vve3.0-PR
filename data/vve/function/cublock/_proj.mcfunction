@@ -6,6 +6,9 @@ execute store result score a int run data get storage vve:io input.a 10000
 execute store result score mass int run data get storage vve:io input.mass
 execute store result score inertia int run data get storage vve:io input.inertia 100
 execute store result score cube_shift_y int run data get storage vve:io input.cube_shift_y 10000
+execute store result score nvec_x int run data get storage vve:io input.nvec[0] 10000
+execute store result score nvec_y int run data get storage vve:io input.nvec[1] 10000
+execute store result score nvec_z int run data get storage vve:io input.nvec[2] 10000
 execute store result score scale_u int run data get storage vve:io input.scale[0] 10000
 execute store result score scale_v int run data get storage vve:io input.scale[1] 10000
 execute store result score scale_w int run data get storage vve:io input.scale[2] 10000

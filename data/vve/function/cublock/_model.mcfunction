@@ -2,12 +2,15 @@
 # 使用临时对象构建数据模板
 # 输出数据模板storage vve:io result
 
-data modify storage vve:io result set value {a:0, mass:0, inertia:0, cube_shift_y:0, scale:[0.0d, 0.0d, 0.0d], center:[0.0d, 0.0d, 0.0d], velocity:[0.0d, 0.0d, 0.0d], angular_vec:[0.0d, 0.0d, 0.0d], angular_len:0, ivec:[0.0d, 0.0d, 0.0d], jvec:[0.0d, 0.0d, 0.0d], kvec:[0.0d, 0.0d, 0.0d], xyzw:[0.0d, 0.0d, 0.0d, 0.0d], start_xyzw:[0.0d, 0.0d, 0.0d, 0.0d], orth_xyzw:[0.0d, 0.0d, 0.0d, 0.0d], quat_phi:0}
+data modify storage vve:io result set value {a:0, mass:0, inertia:0, cube_shift_y:0, nvec:[0.0d, 0.0d, 0.0d], scale:[0.0d, 0.0d, 0.0d], center:[0.0d, 0.0d, 0.0d], velocity:[0.0d, 0.0d, 0.0d], angular_vec:[0.0d, 0.0d, 0.0d], angular_len:0, ivec:[0.0d, 0.0d, 0.0d], jvec:[0.0d, 0.0d, 0.0d], kvec:[0.0d, 0.0d, 0.0d], xyzw:[0.0d, 0.0d, 0.0d, 0.0d], start_xyzw:[0.0d, 0.0d, 0.0d, 0.0d], orth_xyzw:[0.0d, 0.0d, 0.0d, 0.0d], quat_phi:0}
 
 execute store result storage vve:io result.a double 0.0001 run scoreboard players get a int
 execute store result storage vve:io result.mass int 1 run scoreboard players get mass int
 execute store result storage vve:io result.inertia double 0.01 run scoreboard players get inertia int
 execute store result storage vve:io result.cube_shift_y double 0.0001 run scoreboard players get cube_shift_y int
+execute store result storage vve:io result.nvec[0] double 0.0001 run scoreboard players get nvec_x int
+execute store result storage vve:io result.nvec[1] double 0.0001 run scoreboard players get nvec_y int
+execute store result storage vve:io result.nvec[2] double 0.0001 run scoreboard players get nvec_z int
 execute store result storage vve:io result.scale[0] double 0.0001 run scoreboard players get scale_u int
 execute store result storage vve:io result.scale[1] double 0.0001 run scoreboard players get scale_v int
 execute store result storage vve:io result.scale[2] double 0.0001 run scoreboard players get scale_w int

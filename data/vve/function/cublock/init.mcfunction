@@ -6,6 +6,9 @@ scoreboard objectives add a dummy
 scoreboard objectives add mass dummy
 scoreboard objectives add inertia dummy
 scoreboard objectives add cube_shift_y dummy
+scoreboard objectives add nvec_x dummy
+scoreboard objectives add nvec_y dummy
+scoreboard objectives add nvec_z dummy
 scoreboard objectives add scale_u dummy
 scoreboard objectives add scale_v dummy
 scoreboard objectives add scale_w dummy
