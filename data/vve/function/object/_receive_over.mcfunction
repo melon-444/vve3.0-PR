@@ -3,12 +3,22 @@
 # 输入receiver{...}
 # 输出{<grab_layer_response,int>,<friction_response,int>,<shift_response,int>,<impulse_response,int>}
 # 输出impulse{...}, shift{...}, friction{...}, grab_layer{...}, bounce_layer{...}
+# 需要传入世界实体为执行者
 
 # 结算实心层
 scoreboard players operation bounce_layer_response int = bounce_layer_receiver_response int
 
 # 结算附着层
 scoreboard players operation grab_layer_response int = grab_layer_receiver_response int
+#execute store result storage math:io xyz[0] double 0.0001 run scoreboard players get grab_layer_receiver_nvec_x int
+#execute store result storage math:io xyz[1] double 0.0001 run scoreboard players get grab_layer_receiver_nvec_y int
+#execute store result storage math:io xyz[2] double 0.0001 run scoreboard players get grab_layer_receiver_nvec_z int
+#data modify entity @s Pos set from storage math:io xyz
+#execute positioned 0.0 0.0 0.0 facing entity @s feet run tp @s ^ ^ ^1.0
+#data modify storage math:io xyz set from entity @s Pos
+#execute store result score nvec_x int run data get storage math:io xyz[0] 10000
+#execute store result score nvec_x int run data get storage math:io xyz[1] 10000
+#execute store result score nvec_x int run data get storage math:io xyz[2] 10000
 scoreboard players operation nvec_x int = grab_layer_receiver_nvec_x int
 scoreboard players operation nvec_y int = grab_layer_receiver_nvec_y int
 scoreboard players operation nvec_z int = grab_layer_receiver_nvec_z int

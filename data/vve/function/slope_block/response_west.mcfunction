@@ -1,56 +1,22 @@
-#vve:_detect_material
-# 介质探测
-# 输入执行位置
-# 输入cpoint{...}
-# 输出介质响应(各模块的临时对象)
-# 传入世界实体为执行者(不保证Pos位于执行位置)
+#vve:slope_block/response_west
+# vve:slope_block/detect_west调用
 
-# 各模块响应信号重置
-scoreboard players set shift_response int 0
-scoreboard players set impulse_response int 0
-scoreboard players set friction_response int 10000
-scoreboard players set grab_layer_response int 0
-scoreboard players set bounce_layer_response int 0
-scoreboard players set material_response int 0
+scoreboard players set grab_layer_response int 1
+#function vve:slope_block/nvec_up
+#function vve:slope_block/nvec_west
+#execute if score stemp_x int matches ..9000 run function vve:slope_block/nvec_up
+#execute if score stemp_x int matches 9001.. run function vve:slope_block/nvec_west
+scoreboard players set nvec_x int -7071
+scoreboard players set nvec_y int 7071
+scoreboard players set nvec_z int 0
+scoreboard players operation grab_depth int *= 2378 int
+scoreboard players operation grab_depth int /= 3363 int
 
-#particle flame
-#return run function vve:cpoint/_render_debug
+#scoreboard players set test int 1
+#tellraw @a "slope response"
+#tellraw @a ["grab_depth: ", {"score":{"name":"grab_depth","objective":"int"}}]
+#tellraw @a ["stemp: ",{"score":{"name":"stemp_x","objective":"int"}},", ",{"score":{"name":"stemp_y","objective":"int"}},", ",{"score":{"name":"stemp_z","objective":"int"}}]
 
-# 检测不同介质
-
-# 补充非方块介质
-# ...
-execute as @e[tag=vve_material_box,dx=0,dy=0,dz=0] positioned ~-0.9999 ~-0.9999 ~-0.9999 if entity @s[dx=0,dy=0,dz=0] run function vve:call_material
-execute if score material_response int matches 1.. run return fail
-
-# 空气介质
-execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
-
-# 补充其它方块介质
-# ...
-
-# 实心介质
-scoreboard players operation stemp_x int = c_x int
-scoreboard players operation stemp_y int = c_y int
-scoreboard players operation stemp_z int = c_z int
-scoreboard players operation stemp_x int %= 10000 int
-scoreboard players operation stemp_y int %= 10000 int
-scoreboard players operation stemp_z int %= 10000 int
-execute if score stemp_y int matches 9501.. positioned ~ ~0.0525 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
-execute if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/detect
-scoreboard players set stemp_rx int 0
-scoreboard players set stemp_ry int 0
-scoreboard players set stemp_rz int 0
-execute if score stemp_x int matches 0..4999 unless block ~-1 ~ ~ #vve:pass run scoreboard players set stemp_rx int -1
-execute if score stemp_x int matches 5000.. unless block ~1 ~ ~ #vve:pass run scoreboard players set stemp_rx int 1
-execute if score stemp_y int matches 0..4999 unless block ~ ~-1 ~ #vve:pass run scoreboard players set stemp_ry int -1
-execute if score stemp_y int matches 5000.. unless block ~ ~1 ~ #vve:pass run scoreboard players set stemp_ry int 1
-execute if score stemp_z int matches 0..4999 unless block ~ ~ ~-1 #vve:pass run scoreboard players set stemp_rz int -1
-execute if score stemp_z int matches 5000.. unless block ~ ~ ~1 #vve:pass run scoreboard players set stemp_rz int 1
-execute store result storage vve:io rx int 1 run scoreboard players get stemp_rx int
-execute store result storage vve:io ry int 1 run scoreboard players get stemp_ry int
-execute store result storage vve:io rz int 1 run scoreboard players get stemp_rz int
-function vve:solid/search with storage vve:io {}
 # 计算沿法线反方向的速度
 scoreboard players operation stemp_v int = c_vx int
 scoreboard players operation stemp_v int *= nvec_x int
@@ -62,11 +28,7 @@ scoreboard players operation stemp_0 int *= nvec_z int
 scoreboard players operation stemp_v int += stemp_0 int
 scoreboard players operation stemp_v int /= -10000 int
 # 附着层响应
-#execute if score test_n int matches 57 run tellraw @a "--"
-#execute if score test_n int matches 57 run function math:nvec/_print
-#execute if score test_n int matches 57 run function vve:cpoint/_print
-#execute if score test_n int matches 57 run tellraw @a ["grab_depth: ", {"score":{"name":"grab_depth","objective":"int"}}]
-execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response
+execute if score grab_depth int <= grab_depth_max int run return run function vve:slope_block/grab_layer_response
 # 实心层反弹
 scoreboard players set bounce_layer_response int 1
 # 取消附着层响应
@@ -78,7 +40,6 @@ scoreboard players operation friction_response int = vve_solid_friction int
 # 位移至特定深度
 scoreboard players set shift_response int 1
 scoreboard players operation stemp_depth int = grab_depth int
-scoreboard players operation stemp_depth int -= grab_depth_mid int
 scoreboard players operation shift_x int = nvec_x int
 scoreboard players operation shift_y int = nvec_y int
 scoreboard players operation shift_z int = nvec_z int
@@ -145,6 +106,4 @@ scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
 
-#execute if score test int matches 1 run function math:nvec/_print
-#execute if score test int matches 1 run tellraw @a ["stemp: ",{"score":{"name":"stemp_x","objective":"int"}},", ",{"score":{"name":"stemp_y","objective":"int"}},", ",{"score":{"name":"stemp_z","objective":"int"}}]
-#execute if score test int matches 1 run function vve:impulse/_print
+#function vve:slope_block/nvec_west

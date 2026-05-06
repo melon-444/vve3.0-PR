@@ -7,6 +7,8 @@ scoreboard objectives add vve_material_type dummy
 # 设置常量
 scoreboard players set 408 int 408
 scoreboard players set 577 int 577
+scoreboard players set 2378 int 2378
+scoreboard players set 3363 int 3363
 scoreboard players set 314159265 int 314159265
 function vve:_consts
 

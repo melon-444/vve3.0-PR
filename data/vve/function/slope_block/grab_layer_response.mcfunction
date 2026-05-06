@@ -1,7 +1,5 @@
-#vve:grab_layer/response
-# vve:_detect_material调用
-# vve:_detect_solid调用
-# vve:_detect_slope调用
+#vve:slope_block/grab_layer_response
+# vve:slope_block/response_west调用
 
 # 摩擦响应
 scoreboard players operation friction_response int = vve_grab_friction int
@@ -15,7 +13,7 @@ execute if score stemp_v int > grab_layer_v int run return fail
 # 位移至特定深度
 scoreboard players set shift_response int 1
 scoreboard players operation stemp_depth int = grab_depth int
-scoreboard players operation stemp_depth int -= grab_depth_mid int
+#function math:nvec/_print
 scoreboard players operation shift_x int = nvec_x int
 scoreboard players operation shift_y int = nvec_y int
 scoreboard players operation shift_z int = nvec_z int
@@ -78,3 +76,5 @@ scoreboard players operation impulse_fz int *= c_mass int
 scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
+
+#function vve:slope_block/nvec_west

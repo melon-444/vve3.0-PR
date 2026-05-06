@@ -9,7 +9,7 @@ scoreboard players set grab_layer_receiver_response int 0
 scoreboard players set grab_layer_receiver_v_max int 0
 scoreboard players set grab_layer_receiver_v_norm int 0
 scoreboard players set grab_layer_receiver_nvec_x int 0
-scoreboard players set grab_layer_receiver_nvec_y int 10000
+scoreboard players set grab_layer_receiver_nvec_y int 0
 scoreboard players set grab_layer_receiver_nvec_z int 0
 
 scoreboard players set friction_receiver_response int 10000

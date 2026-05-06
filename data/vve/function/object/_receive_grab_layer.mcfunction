@@ -21,3 +21,9 @@ scoreboard players operation grab_layer_receiver_v_max int > stemp_abs int
 scoreboard players operation stemp_abs int = stemp_v int
 execute if score stemp_abs int matches ..-1 run scoreboard players operation stemp_abs int *= -1 int
 execute if score grab_layer_receiver_v_norm int <= stemp_abs int run function vve:object/receiver_nvec
+#scoreboard players operation grab_layer_receiver_v_norm int > stemp_abs int
+
+# 法向调和
+#scoreboard players operation grab_layer_receiver_nvec_x int += nvec_x int
+#scoreboard players operation grab_layer_receiver_nvec_y int += nvec_y int
+#scoreboard players operation grab_layer_receiver_nvec_z int += nvec_z int

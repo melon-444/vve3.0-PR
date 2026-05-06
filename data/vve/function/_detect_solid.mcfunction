@@ -74,6 +74,9 @@ scoreboard players operation shift_x int /= 10000 int
 scoreboard players operation shift_y int /= 10000 int
 scoreboard players operation shift_z int /= 10000 int
 
+# 脱离速度忽略
+execute if score stemp_v int matches ..-1 run return fail
+
 # 施加反弹冲量
 scoreboard players set impulse_response int 1
 scoreboard players operation impulse_x int = c_x int

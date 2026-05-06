@@ -5,6 +5,9 @@
 # 迭代couple{...}
 # 输出<couple_response,int>
 
+#execute if score test_n int matches 47.. run tellraw @a "--"
+#execute if score test_n int matches 47.. run function vve:impulse/_print
+
 scoreboard players add impulse_receiver_response int 1
 
 function vve:impulse/_add_couple

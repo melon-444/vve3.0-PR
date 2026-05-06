@@ -1,4 +1,4 @@
-#vve:_detect_material
+#vve:_detect_slope
 # 介质探测
 # 输入执行位置
 # 输入cpoint{...}
@@ -29,15 +29,16 @@ execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation fri
 # 补充其它方块介质
 # ...
 
-# 实心介质
+# 实心/斜面介质
 scoreboard players operation stemp_x int = c_x int
 scoreboard players operation stemp_y int = c_y int
 scoreboard players operation stemp_z int = c_z int
 scoreboard players operation stemp_x int %= 10000 int
 scoreboard players operation stemp_y int %= 10000 int
 scoreboard players operation stemp_z int %= 10000 int
-execute if score stemp_y int matches 9501.. positioned ~ ~0.0525 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
-execute if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/detect
+execute if score stemp_y int matches 9901.. positioned ~ ~0.0125 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
+execute if block ~ ~ ~ minecraft:birch_trapdoor run function vve:slope_block/detect
+execute if score material_response int matches 1.. run return fail
 scoreboard players set stemp_rx int 0
 scoreboard players set stemp_ry int 0
 scoreboard players set stemp_rz int 0
@@ -62,10 +63,6 @@ scoreboard players operation stemp_0 int *= nvec_z int
 scoreboard players operation stemp_v int += stemp_0 int
 scoreboard players operation stemp_v int /= -10000 int
 # 附着层响应
-#execute if score test_n int matches 57 run tellraw @a "--"
-#execute if score test_n int matches 57 run function math:nvec/_print
-#execute if score test_n int matches 57 run function vve:cpoint/_print
-#execute if score test_n int matches 57 run tellraw @a ["grab_depth: ", {"score":{"name":"grab_depth","objective":"int"}}]
 execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response
 # 实心层反弹
 scoreboard players set bounce_layer_response int 1
@@ -144,7 +141,3 @@ scoreboard players operation impulse_fz int *= c_mass int
 scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
-
-#execute if score test int matches 1 run function math:nvec/_print
-#execute if score test int matches 1 run tellraw @a ["stemp: ",{"score":{"name":"stemp_x","objective":"int"}},", ",{"score":{"name":"stemp_y","objective":"int"}},", ",{"score":{"name":"stemp_z","objective":"int"}}]
-#execute if score test int matches 1 run function vve:impulse/_print
