@@ -62,10 +62,6 @@ scoreboard players operation stemp_0 int *= nvec_z int
 scoreboard players operation stemp_v int += stemp_0 int
 scoreboard players operation stemp_v int /= -10000 int
 # 附着层响应
-#execute if score test_n int matches 57 run tellraw @a "--"
-#execute if score test_n int matches 57 run function math:nvec/_print
-#execute if score test_n int matches 57 run function vve:cpoint/_print
-#execute if score test_n int matches 57 run tellraw @a ["grab_depth: ", {"score":{"name":"grab_depth","objective":"int"}}]
 execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response
 # 实心层反弹
 scoreboard players set bounce_layer_response int 1

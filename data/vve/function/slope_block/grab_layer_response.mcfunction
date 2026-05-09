@@ -24,6 +24,10 @@ scoreboard players operation shift_x int /= 10000 int
 scoreboard players operation shift_y int /= 10000 int
 scoreboard players operation shift_z int /= 10000 int
 
+tellraw @a "---"
+tellraw @a "slope grab"
+function vve:shift/_print
+
 # 施加支持力冲量
 scoreboard players set impulse_response int 1
 scoreboard players operation impulse_x int = c_x int
