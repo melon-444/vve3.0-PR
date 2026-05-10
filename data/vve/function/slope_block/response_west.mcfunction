@@ -13,9 +13,11 @@ scoreboard players operation grab_depth int *= 2378 int
 scoreboard players operation grab_depth int /= 3363 int
 
 #scoreboard players set test int 1
-#tellraw @a "slope response"
-#tellraw @a ["grab_depth: ", {"score":{"name":"grab_depth","objective":"int"}}]
-#tellraw @a ["stemp: ",{"score":{"name":"stemp_x","objective":"int"}},", ",{"score":{"name":"stemp_y","objective":"int"}},", ",{"score":{"name":"stemp_z","objective":"int"}}]
+#execute if score test_n int matches 17 run tellraw @a "---"
+#execute if score test_n int matches 17 run tellraw @a "slope response"
+#execute if score test_n int matches 17 run function vve:cpoint/_print
+#execute if score test_n int matches 17 run tellraw @a ["grab_depth: ", {"score":{"name":"grab_depth","objective":"int"}}]
+#execute if score test_n int matches 17 run tellraw @a ["stemp: ",{"score":{"name":"stemp_x","objective":"int"}},", ",{"score":{"name":"stemp_y","objective":"int"}},", ",{"score":{"name":"stemp_z","objective":"int"}}]
 
 # 计算沿法线反方向的速度
 scoreboard players operation stemp_v int = c_vx int
@@ -39,16 +41,18 @@ scoreboard players operation friction_response int = vve_solid_friction int
 
 # 位移至特定深度
 scoreboard players set shift_response int 1
-scoreboard players operation stemp_depth int = grab_depth int
 scoreboard players operation shift_x int = nvec_x int
 scoreboard players operation shift_y int = nvec_y int
 scoreboard players operation shift_z int = nvec_z int
-scoreboard players operation shift_x int *= stemp_depth int
-scoreboard players operation shift_y int *= stemp_depth int
-scoreboard players operation shift_z int *= stemp_depth int
+scoreboard players operation shift_x int *= grab_depth int
+scoreboard players operation shift_y int *= grab_depth int
+scoreboard players operation shift_z int *= grab_depth int
 scoreboard players operation shift_x int /= 10000 int
 scoreboard players operation shift_y int /= 10000 int
 scoreboard players operation shift_z int /= 10000 int
+scoreboard players operation stemp_0 int = c_y int
+scoreboard players operation stemp_0 int %= 10000 int
+execute unless score stemp_0 int = stemp_y int run function vve:slope_block/shift_up
 
 # 脱离速度忽略
 execute if score stemp_v int matches ..-1 run return fail

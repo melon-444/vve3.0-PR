@@ -79,6 +79,6 @@ scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
 
-execute if score test_n int matches 17 run tellraw @a "--"
-execute if score test_n int matches 17 run tellraw @a "solid grab"
-execute if score test_n int matches 17 run function vve:shift/_print
+#execute if score test_n int matches 17 run tellraw @a "--"
+#execute if score test_n int matches 17 run tellraw @a "solid grab"
+#execute if score test_n int matches 17 run function vve:shift/_print

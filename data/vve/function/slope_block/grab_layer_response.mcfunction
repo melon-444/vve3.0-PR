@@ -12,21 +12,22 @@ execute if score stemp_v int > grab_layer_v int run return fail
 
 # 位移至特定深度
 scoreboard players set shift_response int 1
-scoreboard players operation stemp_depth int = grab_depth int
-#function math:nvec/_print
 scoreboard players operation shift_x int = nvec_x int
 scoreboard players operation shift_y int = nvec_y int
 scoreboard players operation shift_z int = nvec_z int
-scoreboard players operation shift_x int *= stemp_depth int
-scoreboard players operation shift_y int *= stemp_depth int
-scoreboard players operation shift_z int *= stemp_depth int
+scoreboard players operation shift_x int *= grab_depth int
+scoreboard players operation shift_y int *= grab_depth int
+scoreboard players operation shift_z int *= grab_depth int
 scoreboard players operation shift_x int /= 10000 int
 scoreboard players operation shift_y int /= 10000 int
 scoreboard players operation shift_z int /= 10000 int
+scoreboard players operation stemp_0 int = c_y int
+scoreboard players operation stemp_0 int %= 10000 int
+execute unless score stemp_0 int = stemp_y int run function vve:slope_block/shift_up
 
-tellraw @a "---"
-tellraw @a "slope grab"
-function vve:shift/_print
+#tellraw @a "---"
+#tellraw @a "slope grab"
+#function vve:shift/_print
 
 # 施加支持力冲量
 scoreboard players set impulse_response int 1
