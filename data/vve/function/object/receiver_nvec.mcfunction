@@ -1,5 +1,6 @@
 #vve:object/receiver_nvec
 # vve:object/_receive_grab_layer调用
+# vve:object/_receive_bounce_layer调用
 
 scoreboard players operation grab_layer_receiver_nvec_x int = nvec_x int
 scoreboard players operation grab_layer_receiver_nvec_y int = nvec_y int
