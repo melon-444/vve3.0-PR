@@ -4,6 +4,9 @@
 # 输入receiver{...}
 # 需要传入世界实体为执行者
 
+execute if score angular_x int matches ..-1 run scoreboard players add angular_x int 99
+execute if score angular_y int matches ..-1 run scoreboard players add angular_y int 99
+execute if score angular_z int matches ..-1 run scoreboard players add angular_z int 99
 scoreboard players operation angular_x int /= 100 int
 scoreboard players operation angular_y int /= 100 int
 scoreboard players operation angular_z int /= 100 int
@@ -13,11 +16,15 @@ scoreboard players operation angular_y int *= nvec_y int
 scoreboard players operation angular_z int *= nvec_z int
 scoreboard players operation angular_x int += angular_y int
 scoreboard players operation angular_x int += angular_z int
+execute if score angular_x int matches ..-1 run scoreboard players add angular_x int 9999
 execute store result score angular_y int store result score angular_z int run scoreboard players operation angular_x int /= 10000 int
 
 scoreboard players operation angular_x int *= nvec_x int
 scoreboard players operation angular_y int *= nvec_y int
 scoreboard players operation angular_z int *= nvec_z int
+execute if score angular_x int matches ..-1 run scoreboard players add angular_x int 99
+execute if score angular_y int matches ..-1 run scoreboard players add angular_y int 99
+execute if score angular_z int matches ..-1 run scoreboard players add angular_z int 99
 scoreboard players operation angular_x int /= 100 int
 scoreboard players operation angular_y int /= 100 int
 scoreboard players operation angular_z int /= 100 int
