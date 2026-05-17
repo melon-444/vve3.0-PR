@@ -21,3 +21,4 @@ function vve:cube/init
 function vve:cublock/init
 function vve:box_object/init
 function vve:cubox/init
+function vve:seat/init

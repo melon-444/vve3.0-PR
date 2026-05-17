@@ -1,0 +1,7 @@
+#vve:seat/doc.mcfo
+
+# seat临时对象
+_this:{
+	width:<width,int,1w>,
+	height:<height,int,1w>
+}
