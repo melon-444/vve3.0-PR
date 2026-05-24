@@ -10,21 +10,6 @@ execute if score stemp_v int matches ..-1 run return fail
 # 速度过大直接忽略
 execute if score stemp_v int > grab_layer_v int run return fail
 
-# 位移至特定深度
-scoreboard players set shift_response int 1
-scoreboard players operation shift_x int = nvec_x int
-scoreboard players operation shift_y int = nvec_y int
-scoreboard players operation shift_z int = nvec_z int
-scoreboard players operation shift_x int *= grab_depth int
-scoreboard players operation shift_y int *= grab_depth int
-scoreboard players operation shift_z int *= grab_depth int
-scoreboard players operation shift_x int /= 10000 int
-scoreboard players operation shift_y int /= 10000 int
-scoreboard players operation shift_z int /= 10000 int
-scoreboard players operation stemp_0 int = c_y int
-scoreboard players operation stemp_0 int %= 10000 int
-execute unless score stemp_0 int = stemp_y int run function vve:slope_block/shift_up
-
 #tellraw @a "---"
 #tellraw @a "slope grab"
 #function vve:shift/_print

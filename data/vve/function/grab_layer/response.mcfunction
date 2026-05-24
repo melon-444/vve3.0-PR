@@ -6,12 +6,6 @@
 # 摩擦响应
 scoreboard players operation friction_response int = vve_grab_friction int
 
-# 脱离附着层的速度忽略
-execute if score stemp_v int matches ..-1 run return fail
-
-# 速度过大直接忽略
-execute if score stemp_v int > grab_layer_v int run return fail
-
 # 位移至特定深度
 scoreboard players set shift_response int 1
 scoreboard players operation stemp_depth int = grab_depth int
@@ -25,6 +19,12 @@ scoreboard players operation shift_z int *= stemp_depth int
 scoreboard players operation shift_x int /= 10000 int
 scoreboard players operation shift_y int /= 10000 int
 scoreboard players operation shift_z int /= 10000 int
+
+# 脱离附着层的速度忽略
+execute if score stemp_v int matches ..-1 run return fail
+
+# 速度过大直接忽略
+execute if score stemp_v int > grab_layer_v int run return fail
 
 # 施加支持力冲量
 scoreboard players set impulse_response int 1
