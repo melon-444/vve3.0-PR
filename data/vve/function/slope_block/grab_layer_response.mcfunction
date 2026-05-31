@@ -28,6 +28,11 @@ scoreboard players operation stemp_x int *= c_mass int
 scoreboard players operation stemp_y int *= c_mass int
 scoreboard players operation stemp_z int *= c_mass int
 
+scoreboard players operation impulse_fx int = stemp_x int
+scoreboard players operation impulse_fy int = stemp_y int
+scoreboard players operation impulse_fz int = stemp_z int
+return fail
+
 # 施加切向摩擦力
 scoreboard players operation impulse_fx int = c_vx int
 scoreboard players operation impulse_fy int = c_vy int

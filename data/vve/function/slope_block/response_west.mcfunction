@@ -19,7 +19,7 @@ scoreboard players operation stemp_0 int = c_y int
 scoreboard players operation stemp_0 int %= 10000 int
 execute unless score stemp_0 int = stemp_y int run function vve:slope_block/shift_up
 
-function vve:slope_block/nvec_west
+#function vve:slope_block/nvec_west
 
 # 计算沿法线反方向的速度
 scoreboard players operation stemp_v int = c_vx int
@@ -32,6 +32,7 @@ scoreboard players operation stemp_0 int *= nvec_z int
 scoreboard players operation stemp_v int += stemp_0 int
 scoreboard players operation stemp_v int /= -10000 int
 # 附着层响应
+return run function vve:slope_block/grab_layer_response
 execute if score grab_depth int <= grab_depth_max int run return run function vve:slope_block/grab_layer_response
 # 实心层反弹
 scoreboard players set bounce_layer_response int 1
