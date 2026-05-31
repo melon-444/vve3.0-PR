@@ -10,10 +10,6 @@ execute if score stemp_v int matches ..-1 run return fail
 # 速度过大直接忽略
 execute if score stemp_v int > grab_layer_v int run return fail
 
-#tellraw @a "---"
-#tellraw @a "slope grab"
-#function vve:shift/_print
-
 # 施加支持力冲量
 scoreboard players set impulse_response int 1
 scoreboard players operation impulse_x int = c_x int

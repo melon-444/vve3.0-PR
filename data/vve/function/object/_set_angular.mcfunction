@@ -1,6 +1,6 @@
 #vve:object/_set_angular
 # 设置临时对象的角速度
-# 输入_this:{<angular_x,int,100w>,<angular_y,int,100w>,<angular_z,int,100w>}
+# 输入_this:{<angular_x,int,100w>,<angular_y,int,100w>,<angular_z,int,100w>,quaternion.xyzw}
 # 输出_this:{<angular_len,int,100w>,quaternion{...}}
 # 传入世界实体为执行者
 

@@ -3,21 +3,6 @@
 
 scoreboard players set grab_layer_response int 1
 function vve:slope_block/nvec_up
-#function vve:slope_block/nvec_west
-#execute if score stemp_x int matches ..9000 run function vve:slope_block/nvec_up
-#execute if score stemp_x int matches 9001.. run function vve:slope_block/nvec_west
-#scoreboard players set nvec_x int -7071
-#scoreboard players set nvec_y int 7071
-#scoreboard players set nvec_z int 0
-#scoreboard players operation grab_depth int *= 2378 int
-#scoreboard players operation grab_depth int /= 3363 int
-
-#scoreboard players set test int 1
-#execute if score test_n int matches 17 run tellraw @a "---"
-#execute if score test_n int matches 17 run tellraw @a "slope response"
-#execute if score test_n int matches 17 run function vve:cpoint/_print
-#execute if score test_n int matches 17 run tellraw @a ["grab_depth: ", {"score":{"name":"grab_depth","objective":"int"}}]
-#execute if score test_n int matches 17 run tellraw @a ["stemp: ",{"score":{"name":"stemp_x","objective":"int"}},", ",{"score":{"name":"stemp_y","objective":"int"}},", ",{"score":{"name":"stemp_z","objective":"int"}}]
 
 # 位移至特定深度
 scoreboard players set shift_response int 1
