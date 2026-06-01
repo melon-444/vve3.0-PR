@@ -36,7 +36,7 @@ scoreboard players operation stemp_z int = c_z int
 scoreboard players operation stemp_x int %= 10000 int
 scoreboard players operation stemp_y int %= 10000 int
 scoreboard players operation stemp_z int %= 10000 int
-execute if score stemp_y int matches 9501.. positioned ~ ~0.0525 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
+execute if score stemp_y int matches 5501.. positioned ~ ~0.4525 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
 execute if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/detect
 scoreboard players set stemp_rx int 0
 scoreboard players set stemp_ry int 0
