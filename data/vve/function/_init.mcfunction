@@ -16,7 +16,12 @@ function vve:_consts
 function vve:point/init
 function vve:block/init
 function vve:object/init
+function vve:shift/init
+function vve:impulse/init
 function vve:friction/init
+function vve:grab_layer/init
+function vve:shift_origin/init
+function vve:surface/init
 function vve:cube/init
 function vve:cublock/init
 function vve:box_object/init

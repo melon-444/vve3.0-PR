@@ -36,8 +36,6 @@ scoreboard players operation stemp_z int = c_z int
 scoreboard players operation stemp_x int %= 10000 int
 scoreboard players operation stemp_y int %= 10000 int
 scoreboard players operation stemp_z int %= 10000 int
-execute if score stemp_y int matches 5501.. positioned ~ ~0.4525 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
-execute if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/detect
 scoreboard players set stemp_rx int 0
 scoreboard players set stemp_ry int 0
 scoreboard players set stemp_rz int 0
@@ -140,7 +138,3 @@ scoreboard players operation impulse_fz int *= c_mass int
 scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
-
-#execute if score test int matches 1 run function math:nvec/_print
-#execute if score test int matches 1 run tellraw @a ["stemp: ",{"score":{"name":"stemp_x","objective":"int"}},", ",{"score":{"name":"stemp_y","objective":"int"}},", ",{"score":{"name":"stemp_z","objective":"int"}}]
-#execute if score test int matches 1 run function vve:impulse/_print

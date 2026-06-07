@@ -1,0 +1,8 @@
+#vve:shift_origin/doc.mcfo
+
+# shift_origin临时对象
+_this:{
+	shift_ox:<shift_ox,int,1w>,
+	shift_ox:<shift_oy,int,1w>,
+	shift_ox:<shift_oz,int,1w>
+}

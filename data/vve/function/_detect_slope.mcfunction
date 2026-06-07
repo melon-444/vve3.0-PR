@@ -12,6 +12,7 @@ scoreboard players set friction_response int 10000
 scoreboard players set grab_layer_response int 0
 scoreboard players set bounce_layer_response int 0
 scoreboard players set material_response int 0
+scoreboard players set surface_response int 0
 
 #particle flame
 #return run function vve:cpoint/_render_debug
@@ -29,16 +30,15 @@ execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation fri
 # 补充其它方块介质
 # ...
 
-# 实心/斜面介质
+# 实心介质
 scoreboard players operation stemp_x int = c_x int
 scoreboard players operation stemp_y int = c_y int
 scoreboard players operation stemp_z int = c_z int
 scoreboard players operation stemp_x int %= 10000 int
 scoreboard players operation stemp_y int %= 10000 int
 scoreboard players operation stemp_z int %= 10000 int
-execute if score stemp_y int matches 9901.. positioned ~ ~0.0125 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
-execute if block ~ ~ ~ minecraft:birch_trapdoor run function vve:slope_block/detect
-execute if score material_response int matches 1.. run return fail
+execute if score stemp_y int matches 5501.. positioned ~ ~0.4525 ~ if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/shift_detect
+execute if block ~ ~ ~ minecraft:birch_trapdoor run return run function vve:slope_block/detect
 scoreboard players set stemp_rx int 0
 scoreboard players set stemp_ry int 0
 scoreboard players set stemp_rz int 0

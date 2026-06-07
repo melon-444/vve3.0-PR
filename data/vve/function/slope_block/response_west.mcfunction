@@ -1,6 +1,8 @@
 #vve:slope_block/response_west
 # vve:slope_block/detect_west调用
 
+scoreboard players set surface_response int 1
+
 scoreboard players set grab_layer_response int 1
 function vve:slope_block/nvec_up
 

@@ -8,7 +8,7 @@ scoreboard players operation friction_response int = vve_grab_friction int
 execute if score stemp_v int matches ..-1 run return fail
 
 # 速度过大直接忽略
-execute if score stemp_v int > grab_layer_v int run return fail
+#execute if score stemp_v int > grab_layer_v int run return fail
 
 # 施加支持力冲量
 scoreboard players set impulse_response int 1
@@ -28,10 +28,10 @@ scoreboard players operation stemp_x int *= c_mass int
 scoreboard players operation stemp_y int *= c_mass int
 scoreboard players operation stemp_z int *= c_mass int
 
-scoreboard players operation impulse_fx int = stemp_x int
-scoreboard players operation impulse_fy int = stemp_y int
-scoreboard players operation impulse_fz int = stemp_z int
-return fail
+#scoreboard players operation impulse_fx int = stemp_x int
+#scoreboard players operation impulse_fy int = stemp_y int
+#scoreboard players operation impulse_fz int = stemp_z int
+#return fail
 
 # 施加切向摩擦力
 scoreboard players operation impulse_fx int = c_vx int
@@ -67,5 +67,3 @@ scoreboard players operation impulse_fz int *= c_mass int
 scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
-
-#function vve:slope_block/nvec_west
