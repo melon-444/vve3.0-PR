@@ -43,11 +43,15 @@ scoreboard players set stemp_rx int 0
 scoreboard players set stemp_ry int 0
 scoreboard players set stemp_rz int 0
 execute if score stemp_x int matches 0..4999 unless block ~-1 ~ ~ #vve:pass unless block ~-1 ~ ~ minecraft:birch_trapdoor run scoreboard players set stemp_rx int -1
+execute if score stemp_x int matches 0..4999 unless block ~-1 ~ ~ #vve:pass if block ~-1 ~ ~ minecraft:birch_trapdoor[facing=west] run scoreboard players set stemp_rx int -1
 execute if score stemp_x int matches 5000.. unless block ~1 ~ ~ #vve:pass unless block ~1 ~ ~ minecraft:birch_trapdoor run scoreboard players set stemp_rx int 1
+execute if score stemp_x int matches 5000.. unless block ~1 ~ ~ #vve:pass if block ~1 ~ ~ minecraft:birch_trapdoor[facing=east] run scoreboard players set stemp_rx int 1
 execute if score stemp_y int matches 0..4999 unless block ~ ~-1 ~ #vve:pass unless block ~ ~-1 ~ minecraft:birch_trapdoor run scoreboard players set stemp_ry int -1
-execute if score stemp_y int matches 5000.. unless block ~ ~1 ~ #vve:pass unless block ~ ~1 ~ minecraft:birch_trapdoor run scoreboard players set stemp_ry int 1
+execute if score stemp_y int matches 5000.. unless block ~ ~1 ~ #vve:pass run scoreboard players set stemp_ry int 1
 execute if score stemp_z int matches 0..4999 unless block ~ ~ ~-1 #vve:pass unless block ~ ~ ~-1 minecraft:birch_trapdoor run scoreboard players set stemp_rz int -1
+execute if score stemp_z int matches 0..4999 unless block ~ ~ ~-1 #vve:pass if block ~ ~ ~-1 minecraft:birch_trapdoor[facing=north] run scoreboard players set stemp_rz int -1
 execute if score stemp_z int matches 5000.. unless block ~ ~ ~1 #vve:pass unless block ~ ~ ~1 minecraft:birch_trapdoor run scoreboard players set stemp_rz int 1
+execute if score stemp_z int matches 5000.. unless block ~ ~ ~1 #vve:pass if block ~ ~ ~1 minecraft:birch_trapdoor[facing=south] run scoreboard players set stemp_rz int 1
 execute store result storage vve:io rx int 1 run scoreboard players get stemp_rx int
 execute store result storage vve:io ry int 1 run scoreboard players get stemp_ry int
 execute store result storage vve:io rz int 1 run scoreboard players get stemp_rz int
