@@ -3,4 +3,4 @@
 
 scoreboard players operation grab_depth int = stemp_x int
 scoreboard players operation grab_depth int -= stemp_y int
-execute if score grab_depth int matches -125.. run function vve:slope_block/response_west
+execute if score grab_depth int >= vve_slope_block_d int run function vve:slope_block/response_west

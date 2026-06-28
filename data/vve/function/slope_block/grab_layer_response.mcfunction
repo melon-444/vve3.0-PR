@@ -1,5 +1,8 @@
 #vve:slope_block/grab_layer_response
 # vve:slope_block/response_west调用
+# vve:slope_block/response_east调用
+# vve:slope_block/response_north调用
+# vve:slope_block/response_south调用
 
 # 摩擦响应
 scoreboard players operation friction_response int = vve_grab_friction int

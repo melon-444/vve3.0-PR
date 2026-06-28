@@ -26,3 +26,6 @@ scoreboard players set vve_gravity int 300
 
 # 实心介质最大深度
 scoreboard players set vve_solid_r int 30000
+
+# 斜面方块介质表面附着层
+scoreboard players set vve_slope_block_d int -1000
