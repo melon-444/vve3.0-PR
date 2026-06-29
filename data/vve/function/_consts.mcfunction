@@ -7,7 +7,7 @@ scoreboard players set vve_air_friction int 10000
 # 流体摩擦系数
 scoreboard players set vve_liquid_friction int 8500
 # 流体浮力冲量系数
-scoreboard playersset vve_liquid_c int 8000
+scoreboard players set vve_liquid_c int 8000
 
 # 实心介质摩擦系数
 scoreboard players set vve_grab_friction int 8500

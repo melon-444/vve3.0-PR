@@ -26,6 +26,9 @@ execute if score material_response int matches 1.. run return fail
 # 空气介质
 execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
 
+# 流体介质
+execute if block ~ ~ ~ #vve:liquid run return run scoreboard players operation friction_response int = vve_liquid_friction int
+
 # 补充其它方块介质
 # ...
 
