@@ -25,4 +25,4 @@ scoreboard players operation impulse_fy int = buoyancy_area int
 scoreboard players operation impulse_fy int *= stemp_h int
 scoreboard players operation impulse_fy int /= 100 int
 scoreboard players operation impulse_fy int *= vve_liquid_c int
-scoreboard players operation impulse_fy int /= 10000
+scoreboard players operation impulse_fy int /= 10000 int

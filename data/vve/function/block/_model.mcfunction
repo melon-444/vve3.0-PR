@@ -38,4 +38,4 @@ execute store result storage vve:io result.orth_xyzw[0] double 0.0001 run scoreb
 execute store result storage vve:io result.orth_xyzw[1] double 0.0001 run scoreboard players get quat_orth_y int
 execute store result storage vve:io result.orth_xyzw[2] double 0.0001 run scoreboard players get quat_orth_z int
 execute store result storage vve:io result.orth_xyzw[3] double 0.0001 run scoreboard players get quat_orth_w int
-execute store result storage vve:io result.quat_phi int 0.0001 run scoreboard players get quat_phi int
+execute store result storage vve:io result.quat_phi double 0.0001 run scoreboard players get quat_phi int

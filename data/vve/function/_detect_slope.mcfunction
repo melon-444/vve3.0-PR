@@ -24,11 +24,11 @@ scoreboard players set surface_response int 0
 execute as @e[tag=vve_material_box,dx=0,dy=0,dz=0] positioned ~-0.9999 ~-0.9999 ~-0.9999 if entity @s[dx=0,dy=0,dz=0] run function vve:call_material
 execute if score material_response int matches 1.. run return fail
 
-# 空气介质
-execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
-
 # 流体介质
 execute if block ~ ~ ~ #vve:liquid run return run scoreboard players operation friction_response int = vve_liquid_friction int
+
+# 空气介质
+execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
 
 # 补充其它方块介质
 # ...

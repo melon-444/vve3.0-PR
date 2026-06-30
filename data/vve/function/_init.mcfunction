@@ -5,6 +5,7 @@
 scoreboard objectives add vve_material_type dummy
 
 # 设置常量
+scoreboard players set 200 int 200
 scoreboard players set 408 int 408
 scoreboard players set 577 int 577
 scoreboard players set 2378 int 2378
@@ -27,3 +28,6 @@ function vve:cublock/init
 function vve:box_object/init
 function vve:cubox/init
 function vve:seat/init
+
+# 初始化模块控制
+function module_control:_init

@@ -17,11 +17,11 @@ scoreboard players set bounce_layer_response int 0
 
 # 检测不同介质
 
-# 空气介质
-execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
-
 # 流体介质
 execute if block ~ ~ ~ #vve:liquid run return run scoreboard players operation friction_response int = vve_liquid_friction int
+
+# 空气介质
+execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
 
 # 实心介质
 scoreboard players operation stemp_x int = c_x int

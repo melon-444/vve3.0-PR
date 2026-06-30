@@ -1,4 +1,4 @@
-#vve:cublock/main_c
+#vve:cublock/main_l
 # vve:cublock/tick调用
 # 实体对象主程序
 
@@ -7,7 +7,7 @@ function vve:cublock/_get
 # 运动学迭代
 execute as 0-0-0-0-0 run function vve:object/_iter_motion
 # 介质探测
-execute as 0-0-0-0-0 run function vve:cublock/_iter_cpoints_c
+execute as 0-0-0-0-0 run function vve:cublock/_iter_cpoints_l
 # 力学迭代
 scoreboard players operation vy int -= vve_gravity int
 # 介质响应
