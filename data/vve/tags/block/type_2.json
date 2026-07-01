@@ -1,0 +1,12 @@
+{
+	"values":[
+		"minecraft:dirt",
+		"minecraft:coarse_dirt",
+		"minecraft:rooted_dirt",
+		"minecraft:mud",
+		"minecraft:sand",
+		"minecraft:gravel",
+		"minecraft:soul_sand",
+		"minecraft:soul_soil"
+	]
+}

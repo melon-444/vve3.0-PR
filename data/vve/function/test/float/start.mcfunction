@@ -17,6 +17,7 @@ fill 198 -45 50 202 -44 54 water
 data modify storage vve:io input set from storage vve:class cublock_plate
 function vve:cublock/_proj
 execute positioned 200.5 -41.5 52.5 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+execute positioned 200.5 -41.5 52.5 rotated 0.0 0.0 positioned ~8.0 ~ ~ as @e[tag=math_marker,limit=1] run function vve:object/_rotate_here
 function vve:cublock/_model
 data modify storage vve:io input set from storage vve:io result
 execute positioned 200.5 -41.5 52.5 run function vve:cublock/_new

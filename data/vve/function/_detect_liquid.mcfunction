@@ -14,9 +14,6 @@ scoreboard players set grab_layer_response int 0
 scoreboard players set bounce_layer_response int 0
 scoreboard players set material_response int 0
 
-#particle flame
-#return run function vve:cpoint/_render_debug
-
 # 检测不同介质
 
 # 补充非方块介质

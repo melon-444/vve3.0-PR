@@ -17,6 +17,9 @@ scoreboard players set vve_solid_friction_tan int 3500
 # 使用函数y=1/(x+1)对比例x进行映射后得到的值
 scoreboard players set vve_solid_bounce_inv int 6896
 
+# 不同方块介质材质参数
+function vve:material/_consts
+
 # 附着层深度
 scoreboard players set grab_depth_max int 500
 # 位移至深度

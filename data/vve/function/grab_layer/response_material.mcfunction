@@ -1,10 +1,8 @@
-#vve:grab_layer/response
+#vve:grab_layer/response_material
 # vve:_detect_material调用
-# vve:_detect_solid调用
-# vve:_detect_slope调用
 
 # 摩擦响应
-scoreboard players operation friction_response int = vve_grab_friction int
+scoreboard players operation friction_response int = stemp_gf int
 
 # 位移至特定深度
 scoreboard players set shift_response int 1
@@ -63,7 +61,7 @@ scoreboard players operation impulse_fz int /= -10000 int
 scoreboard players operation impulse_fx int += c_vx int
 scoreboard players operation impulse_fy int += c_vy int
 scoreboard players operation impulse_fz int += c_vz int
-scoreboard players operation stemp_k int = vve_grab_friction_tan int
+scoreboard players operation stemp_k int = stemp_gft int
 scoreboard players remove stemp_k int 10000
 scoreboard players operation impulse_fx int *= stemp_k int
 scoreboard players operation impulse_fy int *= stemp_k int

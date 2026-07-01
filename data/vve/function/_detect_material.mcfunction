@@ -13,9 +13,6 @@ scoreboard players set grab_layer_response int 0
 scoreboard players set bounce_layer_response int 0
 scoreboard players set material_response int 0
 
-#particle flame
-#return run function vve:cpoint/_render_debug
-
 # 检测不同介质
 
 # 补充非方块介质
@@ -31,6 +28,17 @@ execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation fri
 
 # 补充其它方块介质
 # ...
+
+# 获取材质参数
+scoreboard players operation stemp_gf int = vve_grab_friction int
+scoreboard players operation stemp_sf int = vve_solid_friction int
+scoreboard players operation stemp_sbi int = vve_solid_bounce_inv int
+scoreboard players operation stemp_gft int = vve_grab_friction_tan int
+scoreboard players operation stemp_sft int = vve_solid_friction_tan int
+execute if block ~ ~ ~ #vve:type_1 run function vve:material/load_type_1
+execute if block ~ ~ ~ #vve:type_2 run function vve:material/load_type_2
+execute if block ~ ~ ~ #vve:type_3 run function vve:material/load_type_3
+execute if block ~ ~ ~ #vve:type_4 run function vve:material/load_type_4
 
 # 实心介质
 scoreboard players operation stemp_x int = c_x int
@@ -63,14 +71,14 @@ scoreboard players operation stemp_0 int *= nvec_z int
 scoreboard players operation stemp_v int += stemp_0 int
 scoreboard players operation stemp_v int /= -10000 int
 # 附着层响应
-execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response
+execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response_material
 # 实心层反弹
 scoreboard players set bounce_layer_response int 1
 # 取消附着层响应
 scoreboard players set grab_layer_response int 0
 
 # 摩擦响应
-scoreboard players operation friction_response int = vve_solid_friction int
+scoreboard players operation friction_response int = stemp_sf int
 
 # 位移至特定深度
 scoreboard players set shift_response int 1
@@ -100,9 +108,9 @@ scoreboard players operation stemp_z int = nvec_z int
 scoreboard players operation stemp_x int *= stemp_v int
 scoreboard players operation stemp_y int *= stemp_v int
 scoreboard players operation stemp_z int *= stemp_v int
-scoreboard players operation stemp_x int /= vve_solid_bounce_inv int
-scoreboard players operation stemp_y int /= vve_solid_bounce_inv int
-scoreboard players operation stemp_z int /= vve_solid_bounce_inv int
+scoreboard players operation stemp_x int /= stemp_sbi int
+scoreboard players operation stemp_y int /= stemp_sbi int
+scoreboard players operation stemp_z int /= stemp_sbi int
 scoreboard players operation stemp_x int *= c_mass int
 scoreboard players operation stemp_y int *= c_mass int
 scoreboard players operation stemp_z int *= c_mass int
@@ -126,7 +134,7 @@ scoreboard players operation impulse_fz int /= -10000 int
 scoreboard players operation impulse_fx int += c_vx int
 scoreboard players operation impulse_fy int += c_vy int
 scoreboard players operation impulse_fz int += c_vz int
-scoreboard players operation stemp_k int = vve_solid_friction_tan int
+scoreboard players operation stemp_k int = stemp_sft int
 scoreboard players remove stemp_k int 10000
 scoreboard players operation impulse_fx int *= stemp_k int
 scoreboard players operation impulse_fy int *= stemp_k int
