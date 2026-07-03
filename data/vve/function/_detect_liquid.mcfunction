@@ -13,6 +13,7 @@ scoreboard players set friction_response int 10000
 scoreboard players set grab_layer_response int 0
 scoreboard players set bounce_layer_response int 0
 scoreboard players set material_response int 0
+scoreboard players set surface_response int 0
 
 # 检测不同介质
 
