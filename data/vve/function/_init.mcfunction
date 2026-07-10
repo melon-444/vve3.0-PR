@@ -28,6 +28,9 @@ function vve:cublock/init
 function vve:box_object/init
 function vve:cubox/init
 function vve:seat/init
+function vve:sim_slow/init
+function vve:simulator/init
+function vve:test_coord/init
 
 # 初始化模块控制
 function module_control:_init

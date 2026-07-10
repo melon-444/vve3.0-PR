@@ -1,0 +1,11 @@
+#vve:simulator/doc.mcfo
+
+# simulator临时对象
+_this:{
+	global_sim_mod:<global_sim_mod,int>,
+	global_inv_dt:<global_inv_dt,int>,
+	global_set_inv_dt:<global_set_inv_dt,int>,
+	global_rate:<global_rate,int>,
+	tick_funcs:[storage vve:io tick_funcs,ListVoid],
+	sync_funcs:[storage vve:io sync_funcs,ListVoid]
+}

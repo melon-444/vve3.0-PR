@@ -44,8 +44,8 @@ _this:{
 
 # 接收器临时对象
 receiver:{
-	grab_points_receiver:{
-		list_grab_points:[storage vve:io list_grab_points]
+	material_receiver:{
+		material_response:<material_receiver_response,int>
 	},
 	bounce_layer_receiver:{
 		bounce_layer_response:<bounce_layer_receiver_response,int>

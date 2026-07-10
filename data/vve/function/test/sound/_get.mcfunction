@@ -1,0 +1,48 @@
+#vve:test/sound/_get
+# 实体对象赋值到临时对象
+# 输入执行实体
+
+scoreboard players operation vve_sound_timer int = @s vve_sound_timer
+scoreboard players operation vve_last_material int = @s vve_last_material
+scoreboard players operation a int = @s a
+scoreboard players operation mass int = @s mass
+scoreboard players operation inertia int = @s inertia
+scoreboard players operation cube_shift_y int = @s cube_shift_y
+scoreboard players operation nvec_x int = @s nvec_x
+scoreboard players operation nvec_y int = @s nvec_y
+scoreboard players operation nvec_z int = @s nvec_z
+scoreboard players operation scale_u int = @s scale_u
+scoreboard players operation scale_v int = @s scale_v
+scoreboard players operation scale_w int = @s scale_w
+scoreboard players operation x int = @s x
+scoreboard players operation y int = @s y
+scoreboard players operation z int = @s z
+scoreboard players operation vx int = @s vx
+scoreboard players operation vy int = @s vy
+scoreboard players operation vz int = @s vz
+scoreboard players operation angular_x int = @s angular_x
+scoreboard players operation angular_y int = @s angular_y
+scoreboard players operation angular_z int = @s angular_z
+scoreboard players operation angular_len int = @s angular_len
+scoreboard players operation ivec_x int = @s ivec_x
+scoreboard players operation ivec_y int = @s ivec_y
+scoreboard players operation ivec_z int = @s ivec_z
+scoreboard players operation jvec_x int = @s jvec_x
+scoreboard players operation jvec_y int = @s jvec_y
+scoreboard players operation jvec_z int = @s jvec_z
+scoreboard players operation kvec_x int = @s kvec_x
+scoreboard players operation kvec_y int = @s kvec_y
+scoreboard players operation kvec_z int = @s kvec_z
+scoreboard players operation quat_x int = @s quat_x
+scoreboard players operation quat_y int = @s quat_y
+scoreboard players operation quat_z int = @s quat_z
+scoreboard players operation quat_w int = @s quat_w
+scoreboard players operation quat_start_x int = @s quat_start_x
+scoreboard players operation quat_start_y int = @s quat_start_y
+scoreboard players operation quat_start_z int = @s quat_start_z
+scoreboard players operation quat_start_w int = @s quat_start_w
+scoreboard players operation quat_orth_x int = @s quat_orth_x
+scoreboard players operation quat_orth_y int = @s quat_orth_y
+scoreboard players operation quat_orth_z int = @s quat_orth_z
+scoreboard players operation quat_orth_w int = @s quat_orth_w
+scoreboard players operation quat_phi int = @s quat_phi

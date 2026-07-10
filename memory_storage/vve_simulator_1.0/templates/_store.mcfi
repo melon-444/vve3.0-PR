@@ -1,0 +1,5 @@
+#$(module_prefix)_store
+# 存储$(module_name)模拟器
+
+function $(module_prefix)_model
+data modify storage $(project_name):io $(module_name)_plate set from storage $(project_name):io result

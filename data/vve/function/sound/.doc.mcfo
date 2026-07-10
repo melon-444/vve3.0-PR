@@ -1,0 +1,7 @@
+#vve:sound/doc.mcfo
+
+# sound临时对象
+_this:{
+	sound_timer:<vve_sound_timer,int>,
+	last_material:<vve_last_material,int>
+}

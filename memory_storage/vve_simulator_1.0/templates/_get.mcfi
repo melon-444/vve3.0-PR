@@ -1,0 +1,5 @@
+#$(module_prefix)_get
+# 获取$(module_name)模拟器
+
+data modify storage $(project_name):io input set from storage $(project_name):io $(module_name)_plate
+function $(module_prefix)_proj

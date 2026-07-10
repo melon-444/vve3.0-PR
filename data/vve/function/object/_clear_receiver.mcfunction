@@ -1,8 +1,7 @@
 #vve:object/_clear_receiver
 # 清空接收器receiver{...}
 
-data modify storage vve:io list_grab_points set value []
-
+scoreboard players set material_receiver_response int -2147483648
 scoreboard players set bounce_layer_receiver_response int 0
 
 scoreboard players set grab_layer_receiver_response int 0

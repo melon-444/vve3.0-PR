@@ -1,0 +1,20 @@
+#vve:sound/bounce
+# vve:sound/main
+
+# 计算冲量L1范数
+scoreboard players operation temp_imp int = impulse_fx int
+execute if score temp_imp int matches ..-1 run scoreboard players operation temp_imp int *= -1 int
+scoreboard players operation temp_abs int = impulse_fy int
+execute if score temp_abs int matches ..-1 run scoreboard players operation temp_abs int *= -1 int
+scoreboard players operation temp_imp int += temp_abs int
+scoreboard players operation temp_abs int = impulse_fz int
+execute if score temp_abs int matches ..-1 run scoreboard players operation temp_abs int *= -1 int
+scoreboard players operation temp_imp int += temp_abs int
+
+execute if score material_response int matches 1.. run function vve:sound/bounce_solid
+execute if score material_response int matches -2 run function vve:sound/bounce_solid
+
+execute if score material_response int matches -3 run function vve:sound/bounce_type_1
+execute if score material_response int matches -4 run function vve:sound/bounce_type_2
+execute if score material_response int matches -5 run function vve:sound/bounce_type_3
+execute if score material_response int matches -6 run function vve:sound/bounce_type_4

@@ -22,7 +22,9 @@ execute as @e[tag=vve_material_box,dx=0,dy=0,dz=0] positioned ~-0.9999 ~-0.9999 
 execute if score material_response int matches 1.. run return fail
 
 # 流体介质
-execute if block ~ ~ ~ #vve:liquid run return run scoreboard players operation friction_response int = vve_liquid_friction int
+#execute if block ~ ~ ~ #vve:liquid run return run function vve:liquid/response_friction
+execute if block ~ ~ ~ minecraft:water run return run function vve:water/response_friction
+execute if block ~ ~ ~ minecraft:lava run return run function vve:lava/response_friction
 
 # 空气介质
 execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
@@ -31,6 +33,7 @@ execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation fri
 # ...
 
 # 实心介质
+scoreboard players set material_response int -2
 scoreboard players operation stemp_x int = c_x int
 scoreboard players operation stemp_y int = c_y int
 scoreboard players operation stemp_z int = c_z int

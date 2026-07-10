@@ -1,7 +1,7 @@
 #vve:test/float_cmp/start
 
 function vve:_init
-scoreboard players set vve_liquid_c int 300000
+scoreboard players set vve_water_c int 300000
 
 # 测试场地
 fill 202 -46 50 198 -46 54 oak_log

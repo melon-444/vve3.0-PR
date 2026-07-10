@@ -1,0 +1,9 @@
+#vve:sim_slow/doc.mcfo
+
+# sim_slow临时对象
+_this:{
+	<vve_rate,int>,
+	<vve_sim_mod,int>,
+	<inv_dt,int>,
+	<set_inv_dt,int>
+}

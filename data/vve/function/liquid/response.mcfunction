@@ -1,6 +1,8 @@
 #vve:liquid/response
 # vve:_detect_liquid调用
 
+scoreboard players set material_response int -1
+
 # 摩擦系数
 scoreboard players operation friction_response int = vve_liquid_friction int
 

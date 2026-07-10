@@ -9,6 +9,14 @@ scoreboard players set vve_liquid_friction int 8500
 # 流体浮力冲量系数
 scoreboard players set vve_liquid_c int 8000
 
+# 水系数
+scoreboard players set vve_water_friction int 8500
+scoreboard players set vve_water_c int 8000
+
+# 岩浆系数
+scoreboard players set vve_lava_friction int 6500
+scoreboard players set vve_lava_c int 24000
+
 # 实心介质摩擦系数
 scoreboard players set vve_grab_friction int 8500
 scoreboard players set vve_solid_friction int 8500

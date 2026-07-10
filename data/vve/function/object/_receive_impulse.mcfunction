@@ -2,9 +2,6 @@
 # 接收冲量响应
 # 迭代receiver{...}
 
-#execute if score test_n int matches 34.. run tellraw @a "--"
-#execute if score test_n int matches 34.. run function vve:impulse/_print
-
 scoreboard players add impulse_receiver_response int 1
 execute if score impulse_receiver_response int matches 1 run return run function vve:object/first_impulse
 

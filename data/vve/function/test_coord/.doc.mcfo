@@ -1,0 +1,10 @@
+#vve:test_coord/doc.mcfo
+
+# test_coord临时对象
+_this:{
+	center:{
+		<vve_test_x,int,1w>,
+		<vve_test_y,int,1w>,
+		<vve_test_z,int,1w>
+	}
+}

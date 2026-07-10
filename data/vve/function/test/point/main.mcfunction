@@ -15,4 +15,9 @@ function vve:point/_receive_friction
 function vve:point/_sync_motion
 function vve:point/_store
 
+# 声音程序
+function vve:sound/_get
+execute as 0-0-0-0-0 run function vve:sound/main
+function vve:sound/_store
+
 scoreboard players add test_n int 1

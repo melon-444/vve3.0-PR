@@ -1,5 +1,7 @@
 #vve:object/first_impulse
 # vve:object/_receive_impulse调用
+# vve:object/_dec_impulse调用
+# vve:object/_dec_impulse_high调用
 
 scoreboard players operation impulse_receiver_x int = impulse_x int
 scoreboard players operation impulse_receiver_y int = impulse_y int

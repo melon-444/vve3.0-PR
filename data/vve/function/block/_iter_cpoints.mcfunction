@@ -136,7 +136,7 @@ scoreboard players operation c_vy int += vy int
 scoreboard players operation c_vz int += vz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -171,7 +171,7 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int -= sstemp_kz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -186,7 +186,7 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int -= sstemp_iz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -201,7 +201,7 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int += sstemp_kz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -216,7 +216,7 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int -= sstemp_jz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -231,7 +231,7 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int -= sstemp_kz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -246,7 +246,7 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int += sstemp_iz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -261,7 +261,7 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int += sstemp_kz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift

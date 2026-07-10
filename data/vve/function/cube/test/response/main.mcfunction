@@ -23,3 +23,8 @@ execute if score grab_layer_response int matches 3.. if score grab_layer_receive
 # 运动同步
 function vve:object/_sync_motion
 function vve:block/_store
+
+# 声音程序
+function vve:sound/_get
+execute as 0-0-0-0-0 run function vve:sound/main
+function vve:sound/_store

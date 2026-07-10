@@ -5,5 +5,5 @@
 # 输出 @e[tag=result,limit=1]
 
 tag @e[tag=result] remove result
-summon marker ~ ~ ~ {Tags:["point", "result"]}
+summon marker ~ ~ ~ {Tags:["vve_point", "result"]}
 execute as @e[tag=result,limit=1] run function vve:point/set

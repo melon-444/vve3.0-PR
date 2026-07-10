@@ -29,12 +29,15 @@ scoreboard players operation stemp_x int %= 10000 int
 scoreboard players operation stemp_y int %= 10000 int
 scoreboard players operation stemp_z int %= 10000 int
 # 流体介质
-execute if block ~ ~ ~ #vve:liquid run return run function vve:liquid/response
+#execute if block ~ ~ ~ #vve:liquid run return run function vve:liquid/response
+execute if block ~ ~ ~ minecraft:water run return run function vve:water/response
+execute if block ~ ~ ~ minecraft:lava run return run function vve:lava/response
 # 空气介质
 execute if block ~ ~ ~ #vve:pass run return run scoreboard players operation friction_response int = vve_air_friction int
 # 补充其它方块介质
 # ...
 # 实心介质
+scoreboard players set material_response int -2
 scoreboard players set stemp_rx int 0
 scoreboard players set stemp_ry int 0
 scoreboard players set stemp_rz int 0

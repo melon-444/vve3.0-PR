@@ -1,0 +1,4 @@
+#$(module_prefix)bounce_solid
+# $(module_prefix)bounce调用
+
+playsound minecraft:block.deepslate.step player @a ~ ~ ~ 1.0 1.5

@@ -6,3 +6,5 @@ scoreboard players operation stemp_sf int = vve_type_1_sf int
 scoreboard players operation stemp_sbi int = vve_type_1_sbi int
 scoreboard players operation stemp_gft int = vve_type_1_gft int
 scoreboard players operation stemp_sft int = vve_type_1_sft int
+
+scoreboard players set material_response int -3

@@ -5,6 +5,9 @@
 # 输出impulse{...}, shift{...}, friction{...}, grab_layer{...}, bounce_layer{...}
 # 需要传入世界实体为执行者
 
+# 结算材质
+execute if score material_receiver_response int matches -2147483647.. run scoreboard players operation material_response int = material_receiver_response int
+
 # 结算实心层
 scoreboard players operation bounce_layer_response int = bounce_layer_receiver_response int
 
