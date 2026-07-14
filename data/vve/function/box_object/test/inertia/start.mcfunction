@@ -1,14 +1,18 @@
 #vve:box_object/test/inertia/start
 
-function vve:_init
+function vve:_consts
+
+# 测试场地
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
 
 # 生成测试程序实体
 data modify storage vve:io input set from storage vve:class box_object_plate
 function vve:box_object/_proj
-execute positioned 193 -53 53 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+execute at @e[tag=math_marker,limit=1] rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
 function vve:box_object/_model
 data modify storage vve:io input set from storage vve:io result
-execute positioned 193 -53 53 run function vve:box_object/_new
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run function vve:box_object/_new
 item replace entity @e[tag=result,limit=1] container.0 with minecraft:sea_lantern
 
 execute as @e[tag=result,limit=1] run function marker_control:data/_get

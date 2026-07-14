@@ -1,14 +1,20 @@
 #vve:cubox/test/cp/start
 
-function vve:_init
+function vve:_consts
+
+# 测试场地
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 glass
 
 # 生成测试程序实体
 data modify storage vve:io input set from storage vve:class cubox_plate
 function vve:cubox/_proj
-execute positioned 193 -53 53 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
 function vve:cubox/_model
 data modify storage vve:io input set from storage vve:io result
-execute positioned 193 -53 53 run function vve:cubox/_new
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ run function vve:cubox/_new
 execute as @e[tag=result,limit=1] on passengers run item replace entity @s container.0 with minecraft:sea_lantern
 #tag @e[tag=result,limit=1] remove vve_impulse_receiver
 
@@ -26,4 +32,5 @@ tag @e[tag=result,limit=1] add entity_todel
 scoreboard players set @e[tag=result,limit=1] killtime 20
 scoreboard players set test int -1
 
-execute positioned 193 -53 53 positioned ~15 ~15 ~15 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ positioned ~15 ~15 ~15 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as

@@ -2,6 +2,7 @@
 
 execute as @e[tag=vve_cublock,tag=test] run function vve:cublock/_del
 
-fill 198 -44 60 203 -44 61 air
-fill 198 -44 62 203 -44 63 air
-fill 204 -44 60 204 -42 63 air
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~1 ~0 ~3 ~1 ~1 air
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~1 ~2 ~3 ~1 ~3 air
+execute at @e[tag=math_marker,limit=1] run fill ~4 ~1 ~0 ~4 ~3 ~3 air

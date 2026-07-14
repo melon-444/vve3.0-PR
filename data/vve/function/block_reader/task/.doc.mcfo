@@ -1,0 +1,14 @@
+#vve:block_reader/task/doc.mcfo
+
+# task临时对象
+_this:{
+	start_y_layer:<y_start,int>,
+	y_layer:<y,int>,
+	area:{
+		<x_min,int>,
+		<z_min,int>,
+		<x_max,int>,
+		<z_max,int>
+	},
+	callback:[storage vve:io run_func,String]
+}

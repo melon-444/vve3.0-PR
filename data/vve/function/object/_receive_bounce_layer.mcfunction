@@ -21,3 +21,7 @@ scoreboard players operation grab_layer_receiver_v_max int > stemp_abs int
 scoreboard players operation stemp_abs int = stemp_v int
 execute if score stemp_abs int matches ..-1 run scoreboard players operation stemp_abs int *= -1 int
 execute if score grab_layer_receiver_v_norm int <= stemp_abs int run function vve:object/receiver_nvec
+
+# 流体材质覆盖
+execute unless score material_response int matches -9..-7 run return fail
+scoreboard players operation material_receiver_response int = material_response int

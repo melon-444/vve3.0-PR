@@ -7,9 +7,12 @@ scoreboard players set @s killtime 10
 #tellraw @a "---"
 #tellraw @a ["test_n: ", {"score":{"name":"test_n","objective":"int"}}]
 execute as @e[tag=vve_cubox] run function vve:cubox/main
+execute as @e[tag=vve_cubox] run function vve:sound/_get
+execute as 0-0-0-0-0 run function vve:sound/main
+execute as @e[tag=vve_cubox] run function vve:sound/_store
 
 scoreboard players set inp int 3500
-#execute as @e[name=A,limit=1] at @s positioned ~-1.0 ~0.5 ~0.0 rotated -90.0 0.0 run function vve:object/_poke_here_i_as
+execute if score test_n int matches ..40 as @e[name=A,limit=1] at @s positioned ~0.0 ~2.75 ~0.0 rotated 0.0 0.0 run function vve:object/_poke_here_i_as
 
 scoreboard players add test_n int 1
 return fail

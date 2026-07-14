@@ -3,4 +3,5 @@
 # 输入执行实体
 
 scoreboard players operation @s vve_sound_timer = vve_sound_timer int
+scoreboard players operation @s vve_sound_last_bounce = vve_sound_last_bounce int
 scoreboard players operation @s vve_last_material = vve_last_material int

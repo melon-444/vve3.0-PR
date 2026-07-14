@@ -1,0 +1,4 @@
+#vve:test/explode/tnt/_get
+# 实体对象赋值到临时对象
+# 输入执行实体
+

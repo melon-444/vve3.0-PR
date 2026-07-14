@@ -1,0 +1,15 @@
+#$(module_prefix)set_operation
+# $(module_prefix)_new调用
+
+function $(module_prefix)_get
+function $(module_prefix)_update_display
+
+# 设置载具模型
+execute on passengers run item replace entity @s container.0 with minecraft:sea_lantern
+
+# 设置座椅宽高（高度调整玩家位置）
+scoreboard players set width int 10000
+scoreboard players set height int -8000
+execute on passengers on passengers run function vve:seat/_prescript
+
+scoreboard players set @s vve_material_type 2

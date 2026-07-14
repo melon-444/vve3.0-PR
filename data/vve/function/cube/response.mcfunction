@@ -4,35 +4,6 @@
 # 响应信号
 scoreboard players set material_response int 1
 
-# 获取坐标
-scoreboard players operation u int /= 10000 int
-scoreboard players operation v int /= 10000 int
-scoreboard players operation w int /= 10000 int
-
-# 获取边长一半
-scoreboard players operation sstemp_s0 int = @s scale_u
-scoreboard players operation sstemp_s1 int = @s scale_v
-scoreboard players operation sstemp_s2 int = @s scale_w
-scoreboard players operation sstemp_s0 int /= 2 int
-scoreboard players operation sstemp_s1 int /= 2 int
-scoreboard players operation sstemp_s2 int /= 2 int
-
-# 判断到各面距离
-scoreboard players set sstemp_sign_u int 1
-execute if score u int matches ..-1 run scoreboard players set sstemp_sign_u int -1
-scoreboard players operation sstemp_abs_u int = u int
-scoreboard players operation sstemp_abs_u int *= sstemp_sign_u int
-
-scoreboard players set sstemp_sign_v int 1
-execute if score v int matches ..-1 run scoreboard players set sstemp_sign_v int -1
-scoreboard players operation sstemp_abs_v int = v int
-scoreboard players operation sstemp_abs_v int *= sstemp_sign_v int
-
-scoreboard players set sstemp_sign_w int 1
-execute if score w int matches ..-1 run scoreboard players set sstemp_sign_w int -1
-scoreboard players operation sstemp_abs_w int = w int
-scoreboard players operation sstemp_abs_w int *= sstemp_sign_w int
-
 scoreboard players operation sstemp_abs_u int *= -1 int
 scoreboard players operation sstemp_abs_v int *= -1 int
 scoreboard players operation sstemp_abs_w int *= -1 int

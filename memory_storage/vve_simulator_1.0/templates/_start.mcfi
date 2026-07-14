@@ -1,0 +1,4 @@
+#$(module_prefix)_start
+# 开始运行模拟器
+
+schedule function $(module_prefix)tick 1t replace

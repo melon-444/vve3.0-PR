@@ -1,0 +1,8 @@
+#vve:test_auto/doc.mcfo
+
+# test_auto临时对象
+_this:{
+	test_pointers:[storage vve:io test_pointers,ListString],
+	test_timer:[storage vve:io test_timer,Int],
+	test_max_time:[storage vve:io test_max_time,Int]
+}

@@ -2,9 +2,10 @@
 
 function vve:cublock/_del
 
-fill 202 -46 50 198 -46 54 air
-fill 203 -45 50 203 -44 54 air
-fill 198 -44 55 202 -45 55 air
-fill 197 -45 54 197 -44 50 air
-fill 202 -44 49 198 -45 49 air
-fill 198 -45 50 202 -44 54 air
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~2 ~-1 ~0 ~-2 ~-1 ~4 air
+execute at @e[tag=math_marker,limit=1] run fill ~3 ~0 ~0 ~3 ~1 ~4 air
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~1 ~5 ~2 ~0 ~5 air
+execute at @e[tag=math_marker,limit=1] run fill ~-3 ~0 ~4 ~-3 ~1 ~0 air
+execute at @e[tag=math_marker,limit=1] run fill ~2 ~1 ~-1 ~-2 ~0 ~-1 air
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~0 ~0 ~2 ~1 ~4 air

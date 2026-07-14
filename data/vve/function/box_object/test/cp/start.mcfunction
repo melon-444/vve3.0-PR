@@ -1,19 +1,24 @@
 #vve:box_object/test/cp/start
 
-function vve:_init
+function vve:_consts
+
+# 测试场地
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~-1 ~-1 ~-2 ~5 ~-1 ~1 grass_block
 
 # 生成测试程序实体
 data modify storage vve:io input set from storage vve:class box_object_plate
 function vve:box_object/_proj
-execute positioned 193 -53 53 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
 function vve:box_object/_model
 data modify storage vve:io input set from storage vve:io result
-execute positioned 193 -53 53 run function vve:box_object/_new
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ run function vve:box_object/_new
 item replace entity @e[tag=result,limit=1] container.0 with minecraft:sea_lantern
 
 # 初始冲量
 scoreboard players set mass int 35
-scoreboard players set inertia int 1800
+scoreboard players set inertia int 1900
 execute as @e[tag=result,limit=1] at @s positioned ~-0.5 ~1.0 ~0.0 rotated -90.0 0.0 run function vve:object/_poke_here_as
 
 execute as @e[tag=result,limit=1] run function marker_control:data/_get

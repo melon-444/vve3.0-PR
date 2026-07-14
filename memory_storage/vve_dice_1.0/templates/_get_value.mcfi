@@ -1,0 +1,26 @@
+#$(module_prefix)_get_value
+# 获取骰子点数
+
+scoreboard players set res int 0
+scoreboard players set temp_max int 0
+data modify storage $(project_name):io result set value [\
+	[0.0d,0.5773d,-0.8165d],\
+	[0.0d,0.5773d,0.8165d],\
+	[-0.8165d,0.5773d,0.0d],\
+	[0.8165d,0.5773d,0.0d],\
+	[0.0d,-0.5773d,-0.8165d],\
+	[0.0d,-0.5773d,0.8165d],\
+	[-0.8165d,-0.5773d,0.0d],\
+	[0.8165d,-0.5773d,0.0d]\
+]
+data modify storage $(project_name):io temp_values set value [\
+	1,\
+	2,\
+	3,\
+	4,\
+	5,\
+	6,\
+	7,\
+	8\
+]
+execute if data storage $(project_name):io result[0] run function $(module_prefix)get_value_loop

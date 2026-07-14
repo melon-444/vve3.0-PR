@@ -1,26 +1,33 @@
 #vve:test/float/start
 
-function vve:_init
+function vve:_consts
 scoreboard players set vve_water_c int 300000
 
+# x: -200
+# y: +45
+# z: -50
+
 # 测试场地
-fill 202 -46 50 198 -46 54 oak_log
-fill 203 -45 50 203 -44 54 oak_log
-fill 198 -44 55 202 -45 55 oak_log
-fill 197 -45 54 197 -44 50 oak_log
-fill 202 -44 49 198 -45 49 oak_log
-fill 198 -45 50 202 -44 54 water
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~2 ~-1 ~0 ~-2 ~-1 ~4 oak_log
+execute at @e[tag=math_marker,limit=1] run fill ~3 ~0 ~0 ~3 ~1 ~4 oak_log
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~1 ~5 ~2 ~0 ~5 oak_log
+execute at @e[tag=math_marker,limit=1] run fill ~-3 ~0 ~4 ~-3 ~1 ~0 oak_log
+execute at @e[tag=math_marker,limit=1] run fill ~2 ~1 ~-1 ~-2 ~0 ~-1 oak_log
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~0 ~0 ~2 ~1 ~4 water
 
 # center: 200.5 -41.5 52.5
 
 # 生成测试程序实体
 data modify storage vve:io input set from storage vve:class cublock_plate
 function vve:cublock/_proj
-execute positioned 200.5 -41.5 52.5 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
-execute positioned 200.5 -41.5 52.5 rotated 0.0 0.0 positioned ~8.0 ~ ~ as @e[tag=math_marker,limit=1] run function vve:object/_rotate_here
+execute at @e[tag=math_marker,limit=1] positioned ~0.5 ~3.5 ~2.5 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~0.5 ~3.5 ~2.5 rotated 0.0 0.0 positioned ~6.0 ~ ~ as @e[tag=math_marker,limit=1] run function vve:object/_rotate_here
 function vve:cublock/_model
 data modify storage vve:io input set from storage vve:io result
-execute positioned 200.5 -41.5 52.5 run function vve:cublock/_new
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~0.5 ~3.5 ~2.5 run function vve:cublock/_new
 execute as @e[tag=result,limit=1] on passengers run item replace entity @s container.0 with minecraft:ochre_froglight
 
 execute as @e[tag=result,limit=1] run function marker_control:data/_get

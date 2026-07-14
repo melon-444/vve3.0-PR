@@ -1,8 +1,10 @@
 #vve:test/switch_model/start
 
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+
 # 生成测试程序实体
 tag @e[tag=result] remove result
-summon item_display 194 -51 55 {Tags:["test", "vve_test", "result"], CustomName:'{"text":"vve_test"}'}
+execute at @e[tag=math_marker,limit=1] run summon item_display ~ ~ ~ {Tags:["test", "vve_test", "result"], CustomName:'{"text":"vve_test"}'}
 
 item replace entity @e[tag=vve_test,limit=1] container.0 with minecraft:gold_block
 data modify entity @e[tag=result,limit=1] interpolation_duration set value 40

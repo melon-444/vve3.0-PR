@@ -1,14 +1,16 @@
 #vve:test/block_cp/start
 
-function vve:_init
+function vve:_consts
 
-scoreboard players set vve_solid_friction int 3500
+# 获取测试坐标，生成测试场地
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~-1 ~0 ~-1 ~1 ~4 ~1 air
+execute at @e[tag=math_marker,limit=1] run fill ~-1 ~-1 ~-1 ~1 ~-1 ~1 glass
 
 kill @e[tag=test]
-
 # 生成测试程序实体
 tag @e[tag=result] remove result
-summon item_display 193 -53 53 {Tags:["test", "object_test", "result"], CustomName:{"text":"object_test"},teleport_duration:1,interpolation_duration:1,brightness:{sky:15,block:15}}
+execute at @e[tag=math_marker,limit=1] run summon item_display ~ ~4 ~ {Tags:["test", "object_test", "result"], CustomName:{"text":"object_test"},teleport_duration:1,interpolation_duration:1,brightness:{sky:15,block:15}}
 item replace entity @e[tag=result,limit=1] container.0 with minecraft:pearlescent_froglight
 data modify entity @e[tag=result,limit=1] transformation.scale set value [0.5f,0.5f,0.5f]
 scoreboard players set a int 2500
@@ -32,4 +34,4 @@ scoreboard players set @e[tag=result,limit=1] killtime 10
 scoreboard players set test int -1
 
 # 设置旋转
-execute at @e[tag=result,limit=1] positioned ~8.0 ~1.0 ~0.0 run function vve:test/block_cp/rotate_here
+execute at @e[tag=result,limit=1] positioned ~8.0 ~5.0 ~0.0 run function vve:test/block_cp/rotate_here

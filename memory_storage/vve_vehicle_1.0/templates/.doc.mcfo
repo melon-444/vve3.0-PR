@@ -1,0 +1,70 @@
+_this:{
+	control:{
+		forward_power:<forward_power,int,1w>,
+		backward_power:<backward_power,int,1w>,
+		rotation_r:<rotation_r,int,1w>
+	},
+	engine:{
+		<target_power,int>,
+		<damp_x,int>,
+		<damp_v,int>,
+		<damp_k,int>,
+		<damp_b,int>,
+		<damp_f,int>,
+		<v_max,int,1w>
+	},
+	mass:<mass,int,1>,
+	tensor:{
+		<tensor_xx,int,100>,
+		<tensor_yy,int,100>,
+		<tensor_zz,int,100>,
+		<tensor_xy,int,100>,
+		<tensor_xz,int,100>,
+		<tensor_yz,int,100>
+	},
+	cube_shift_y:<cube_shift_y,int,1w>,
+	nvec:{
+		<nvec_x,int,1w>,<nvec_y,int,1w>,<nvec_z,int,1w>
+	},
+	scale:{
+		<scale_u,int,1w>,<scale_v,int,1w>,<scale_w,int,1w>
+	},
+	center:{
+		<x,int,1w>, <y,int,1w>, <z,int,1w>
+	},
+	velocity:{
+		<vx,int,1w>, <vy,int,1w>, <vz,int,1w>
+	},
+	angular_vec:{
+		<angular_x,int,100w>,
+		<angular_y,int,100w>,
+		<angular_z,int,100w>
+	},
+	angular_len:<angular_len,int,100w>,
+	uvw_coord:{
+		ivec:{<ivec_x,int,1w>, <ivec_y,int,1w>, <ivec_z,int,1w>},
+		jvec:{<jvec_x,int,1w>, <jvec_y,int,1w>, <jvec_z,int,1w>},
+		kvec:{<kvec_x,int,1w>, <kvec_y,int,1w>, <kvec_z,int,1w>}
+	},
+	quaternion:{
+		xyzw:{
+			<quat_x,int,1w>,
+			<quat_y,int,1w>,
+			<quat_z,int,1w>,
+			<quat_w,int,1w>
+		},
+		start_xyzw:{
+			<quat_start_x,int,1w>,
+			<quat_start_y,int,1w>,
+			<quat_start_z,int,1w>,
+			<quat_start_w,int,1w>
+		},
+		orth_xyzw:{
+			<quat_orth_x,int,1w>,
+			<quat_orth_y,int,1w>,
+			<quat_orth_z,int,1w>,
+			<quat_orth_w,int,1w>
+		},
+		phi:<quat_phi,int,1w>
+	}
+}

@@ -1,0 +1,16 @@
+#vve:block_reader/arrow/doc.mcfo
+
+# arrow临时对象
+_this:{
+	layer_index:<layer_index,int>,
+	origin_position:{
+		<x,int>,
+		<y,int>,
+		<z,int>
+	},
+	relative_position:{
+		<u,int>,
+		<v,int>,
+		<w,int>
+	}
+}

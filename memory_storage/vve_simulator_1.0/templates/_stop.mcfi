@@ -1,0 +1,4 @@
+#$(module_prefix)_stop
+# 停止运行模拟器
+
+schedule clear $(module_prefix)tick

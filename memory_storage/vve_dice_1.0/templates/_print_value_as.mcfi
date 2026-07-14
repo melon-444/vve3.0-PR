@@ -1,0 +1,7 @@
+#$(module_prefix)_print_value_as
+# 打印骰子点数
+# 传入实例为执行者
+
+function $(module_prefix)_get
+function $(module_prefix)_get_value
+tellraw @a ["roll_value: ", {"score":{"name":"res","objective":"int"}}]

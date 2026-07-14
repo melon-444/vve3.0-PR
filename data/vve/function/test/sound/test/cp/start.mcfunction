@@ -1,14 +1,20 @@
 #vve:test/sound/test/cp/start
 
-function vve:_init
+function vve:_consts
 function vve:test/sound/init
 
 kill @e[tag=test]
 
+# 测试场地
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 grass_block
+execute at @e[tag=math_marker,limit=1] run setblock ~ ~-1 ~ soul_sand
+execute at @e[tag=math_marker,limit=1] run setblock ~1 ~-1 ~ deepslate
+
 # 生成测试程序实体
 data modify storage vve:io input set from storage vve:class sound_plate
 function vve:test/sound/_proj
-execute positioned 193 -53 55 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+execute at @e[tag=math_marker,limit=1] positioned ~1.05 ~3 ~ rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
 function vve:test/sound/_model
 data modify storage vve:io input set from storage vve:io result
 data modify entity @e[tag=math_marker,limit=1] Pos set from storage vve:io input.center

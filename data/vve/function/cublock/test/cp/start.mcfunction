@@ -1,14 +1,20 @@
 #vve:cublock/test/cp/start
 
-function vve:_init
+function vve:_consts
+
+# 测试场地
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 glass
 
 # 生成测试程序实体
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
 data modify storage vve:io input set from storage vve:class cublock_plate
 function vve:cublock/_proj
-execute positioned 193 -53 53 rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ rotated 0.0 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
 function vve:cublock/_model
 data modify storage vve:io input set from storage vve:io result
-execute positioned 193 -53 53 run function vve:cublock/_new
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ run function vve:cublock/_new
 execute as @e[tag=result,limit=1] on passengers run item replace entity @s container.0 with minecraft:ochre_froglight
 #tag @e[tag=result,limit=1] remove vve_impulse_receiver
 
@@ -29,4 +35,5 @@ tag @e[tag=result,limit=1] add entity_todel
 scoreboard players set @e[tag=result,limit=1] killtime 20
 scoreboard players set test int -1
 
-execute positioned 193 -53 53 positioned ~5 ~5 ~5 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] positioned ~ ~4 ~ positioned ~5 ~5 ~5 as @e[tag=result,limit=1] run function vve:object/_rotate_here_as

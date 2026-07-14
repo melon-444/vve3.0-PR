@@ -8,7 +8,7 @@ scoreboard players operation u int = uvec_x int
 scoreboard players operation v int = uvec_y int
 scoreboard players operation w int = uvec_z int
 function vve:tensor/_calc_inertia
-tellraw @a ["inertia: ", {"score":{"name":"inertia","objective":"int"}}]
+#tellraw @a ["inertia: ", {"score":{"name":"inertia","objective":"int"}}]
 scoreboard players operation uvec_x int *= inertia int
 scoreboard players operation uvec_y int *= inertia int
 scoreboard players operation uvec_z int *= inertia int

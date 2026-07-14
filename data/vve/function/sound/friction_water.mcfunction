@@ -1,3 +1,9 @@
 #vve:sound/friction_water
 # vve:sound/friction调用
 
+scoreboard players operation vve_sound_last_bounce int = vve_sound_timer int
+
+execute store result storage math:io xyz[0] double 0.0001 run scoreboard players get impulse_x int
+execute store result storage math:io xyz[1] double 0.0001 run scoreboard players get impulse_y int
+execute store result storage math:io xyz[2] double 0.0001 run scoreboard players get impulse_z int
+data modify entity @s Pos set from storage math:io xyz

@@ -1,0 +1,7 @@
+#$(module_prefix)rand_quat_loop
+# $(module_prefix)_rand_quat调用
+# $(module_prefix)_set_quat调用
+
+data remove storage $(project_name):io result[0]
+scoreboard players remove loop int 1
+execute if score loop int matches 1.. run function $(module_prefix)rand_quat_loop

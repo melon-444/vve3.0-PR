@@ -1,0 +1,4 @@
+#vve:test_coord/get_relative_macro
+# vve:test_coord/_get_relative调用
+
+$tellraw @a [{"text":"relative: ","click_event":{"action":"copy_to_clipboard","value":"~$(sign_u)$(u).$(temp_u) ~$(sign_v)$(v).$(temp_v) ~$(sign_w)$(w).$(temp_w)"}},"~",{"nbt":"sign_u","storage":"vve:io"},{"score":{"name":"u","objective":"int"}},".",{"score":{"name":"temp_u","objective":"int"}}," ~",{"nbt":"sign_v","storage":"vve:io"},{"score":{"name":"v","objective":"int"}},".",{"score":{"name":"temp_v","objective":"int"}}," ~",{"nbt":"sign_w","storage":"vve:io"},{"score":{"name":"w","objective":"int"}},".",{"score":{"name":"temp_w","objective":"int"}}]

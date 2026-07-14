@@ -3,5 +3,6 @@
 # sound临时对象
 _this:{
 	sound_timer:<vve_sound_timer,int>,
+	sound_last_bounce:<vve_sound_last_bounce,int>,
 	last_material:<vve_last_material,int>
 }

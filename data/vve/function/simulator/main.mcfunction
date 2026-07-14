@@ -1,5 +1,5 @@
 #vve:simulator/main
-# 实体对象主程序
+# vve预设模拟器主程序
 
 function vve:simulator/_get
 

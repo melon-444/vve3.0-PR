@@ -1,0 +1,5 @@
+#$(module_prefix)tick
+# 运行模拟器
+
+function $(module_prefix)main
+schedule function $(module_prefix)tick 1t replace
