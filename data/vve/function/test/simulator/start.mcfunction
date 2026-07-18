@@ -4,8 +4,8 @@ function vve:_consts
 
 # 获取测试坐标，生成测试场地
 execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
-execute at @e[tag=math_marker,limit=1] run fill ~-2 ~0 ~-2 ~2 ~4 ~2 air
-execute at @e[tag=math_marker,limit=1] run fill ~-2 ~-1 ~-2 ~2 ~-1 ~2 glass
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~0 ~-2 ~2 ~4 ~3 air
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~-1 ~-2 ~2 ~-1 ~3 glass
 
 execute as @e[tag=vve_cublock] run function vve:cublock/_del
 # 生成测试物理方块

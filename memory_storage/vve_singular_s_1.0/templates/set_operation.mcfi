@@ -1,0 +1,10 @@
+#$(module_prefix)set_operation
+# $(module_prefix)_new调用
+
+function $(module_prefix)_get
+function $(module_prefix)_update_display
+
+execute on passengers run item replace entity @s container.0 with command_block
+
+scoreboard players set @s vve_material_type 8593
+scoreboard players operation @s module_id = #$(module_prefix) module_id

@@ -1,0 +1,6 @@
+#$(module_prefix)test/inter_bounce/end
+
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute at @e[tag=math_marker,limit=1] run fill ~-3 ~-1 ~-2 ~3 ~-1 ~2 air
+
+execute as @e[tag=$(project_name)_$(module_name),tag=test] run function $(module_prefix)_del

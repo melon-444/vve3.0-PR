@@ -1,0 +1,4 @@
+#$(module_prefix)test/inter_bounce/store_frame
+# $(module_prefix)test/inter_bounce/main调用
+
+data modify storage $(project_name):io test_frames.(frame) set from storage $(project_name):io result

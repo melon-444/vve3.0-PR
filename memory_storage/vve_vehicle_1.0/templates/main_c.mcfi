@@ -38,3 +38,6 @@ execute if score res int matches 1 run function vve:vehicle/engine/main
 function vve:cubox/_sync_motion
 function $(module_prefix)_store
 tag @s add vve_material_box
+
+# 坐标安全
+execute unless score y int matches -640000..5120000 run function $(module_prefix)_del

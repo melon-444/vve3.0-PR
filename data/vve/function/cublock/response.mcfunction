@@ -87,8 +87,8 @@ scoreboard players operation sstemp_abs_u int += sstemp_s0 int
 scoreboard players operation sstemp_abs_v int += sstemp_s1 int
 scoreboard players operation sstemp_abs_w int += sstemp_s2 int
 
-execute if score sstemp_abs_u int <= sstemp_abs_v int run function vve:cube/response_branch_0
-execute if score sstemp_abs_u int > sstemp_abs_v int run function vve:cube/response_branch_1
+execute if score sstemp_abs_u int <= sstemp_abs_v int run function vve:cublock/response_branch_0
+execute if score sstemp_abs_u int > sstemp_abs_v int run function vve:cublock/response_branch_1
 
 # 计算沿法向反方向的速度1
 scoreboard players operation stemp_u int = @s vx
@@ -160,10 +160,15 @@ scoreboard players operation stemp_mass int = c_mass int
 scoreboard players operation stemp_mass int *= @s mass
 scoreboard players operation stemp_div int = c_mass int
 scoreboard players operation stemp_div int += @s mass
-scoreboard players operation stemp_mass int /= stemp_div int
-scoreboard players operation impulse_fx int *= stemp_mass int
-scoreboard players operation impulse_fy int *= stemp_mass int
-scoreboard players operation impulse_fz int *= stemp_mass int
+scoreboard players operation res int = stemp_mass int
+scoreboard players operation inp int = stemp_div int
+function math:_3div
+scoreboard players operation impulse_fx int *= res int
+scoreboard players operation impulse_fy int *= res int
+scoreboard players operation impulse_fz int *= res int
+scoreboard players operation impulse_fx int /= 1000 int
+scoreboard players operation impulse_fy int /= 1000 int
+scoreboard players operation impulse_fz int /= 1000 int
 
 execute unless entity @s[tag=vve_impulse_receiver] run return fail
 execute if entity @s[tag=vve_surface] run return run function vve:cublock/return_impulse

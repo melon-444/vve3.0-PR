@@ -9,6 +9,10 @@ function vve:object/_clear_receiver
 
 # 相对坐标组成部分
 # 设置sstemp_i, sstemp_j, sstemp_k
+execute store result score sstemp_ix int store result score sstemp_iy int store result score sstemp_iz int \
+	store result score sstemp_jx int store result score sstemp_jy int store result score sstemp_jz int \
+	store result score sstemp_kx int store result score sstemp_ky int run \
+	scoreboard players operation sstemp_kz int = a int
 scoreboard players operation sstemp_ix int *= ivec_x int
 scoreboard players operation sstemp_iy int *= ivec_y int
 scoreboard players operation sstemp_iz int *= ivec_z int
@@ -117,7 +121,7 @@ scoreboard players operation c_vy int += vy int
 scoreboard players operation c_vz int += vz int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:_detect_material
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
@@ -127,7 +131,7 @@ execute if score impulse_response int matches 1 run function vve:object/_dec_imp
 
 # 结束接受介质响应
 function vve:object/_receive_over
-#function vve:couple/_add_over
+function vve:couple/_add_over
 
 # 区块安全
 tp @s 0 0 0

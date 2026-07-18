@@ -19,9 +19,11 @@ execute if data storage vve:io result[0] run function vve:cubox/_outer_impulse
 function vve:object/_apply_friction
 # 姿态角速度修正
 tag @s[tag=vve_surface] remove vve_surface
-execute if score grab_layer_response int matches 3.. if score grab_layer_receiver_v_norm int < grab_layer_regular_v int run tag @s add vve_surface
-execute if score grab_layer_response int matches 3.. if score grab_layer_receiver_v_norm int < grab_layer_regular_v int as 0-0-0-0-0 run function vve:object/_regular
+execute if score grab_layer_response int matches 3.. if score grab_layer_receiver_v_norm int < grab_layer_regular_v int run function vve:cublock/_regular
 # 运动同步
 function vve:cubox/_sync_motion
 function vve:cubox/_store
 tag @s add vve_material_box
+
+# 坐标安全
+execute unless score y int matches -640000..5120000 run function vve:cubox/_del

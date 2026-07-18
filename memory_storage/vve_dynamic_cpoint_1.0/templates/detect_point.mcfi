@@ -54,7 +54,7 @@ scoreboard players operation c_vy int = vy int
 scoreboard players operation c_vz int = vz int
 scoreboard players operation c_mass int = mass int
 execute as 0-0-0-0-0 at @s run function vve:_detect_box
-scoreboard players operation bounce_layer_receiver_response int += bounce_layer_response int
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
 execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
