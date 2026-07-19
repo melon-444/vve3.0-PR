@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" width="1400" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">运动同步连接数值状态与 Minecraft 实体</title>
+  <desc id="desc">计算层的坐标和四元数经由运动同步写入不同结构的世界实体；实例数据保存是独立过程。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1l10 5-10 5z" fill="#5b2cb1"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#28153f" flood-opacity=".13"/>
+    </filter>
+    <style>
+      .title{font:700 34px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}
+      .h{font:700 24px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}
+      .body{font:500 17px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#5d5268}
+      .code{font:700 18px Consolas,"Microsoft YaHei",monospace;fill:#3b235c}
+    </style>
+  </defs>
+
+  <rect width="1400" height="720" fill="#f7f8fb"/>
+  <text x="70" y="70" class="title">运动同步是计算层与 Minecraft 世界之间的桥梁</text>
+  <text x="70" y="103" class="body">同步只负责表现，不推进物理状态</text>
+  <path d="M0 124h1400" stroke="#e2dced" stroke-width="2"/>
+
+  <g filter="url(#shadow)">
+    <rect x="65" y="190" width="330" height="385" rx="8" fill="#fff"/>
+    <text x="230" y="238" text-anchor="middle" class="h">数值运动状态</text>
+    <rect x="100" y="270" width="260" height="225" rx="6" fill="#ece8f1" stroke="#796b84" stroke-width="3"/>
+    <text x="130" y="312" class="code">x, y, z</text>
+    <text x="130" y="352" class="code">vx, vy, vz</text>
+    <text x="130" y="392" class="code">quat_x ... quat_w</text>
+    <text x="130" y="432" class="code">ivec, jvec, kvec</text>
+    <path d="M120 461h220" stroke="#796b84" stroke-width="3"/>
+    <text x="230" y="535" text-anchor="middle" class="body">记分板中的权威计算结果</text>
+  </g>
+
+  <path d="M410 365h165" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+  <g filter="url(#shadow)">
+    <rect x="585" y="280" width="230" height="170" rx="8" fill="#e9f7fa" stroke="#66b9ca" stroke-width="3"/>
+    <path d="M635 346h130M665 320l-30 26 30 26M735 320l30 26-30 26" fill="none" stroke="#198ca4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="700" y="407" text-anchor="middle" class="code">_sync_motion</text>
+    <text x="700" y="435" text-anchor="middle" class="body">格式转换与实体写入</text>
+  </g>
+  <path d="M825 365h120" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="955" y="165" width="380" height="445" rx="8" fill="#fff"/>
+    <text x="1145" y="213" text-anchor="middle" class="h">Minecraft 世界实体</text>
+
+    <g transform="translate(995 255)">
+      <circle cx="45" cy="45" r="24" fill="#198ca4" stroke="#3b235c" stroke-width="4"/>
+      <path d="M45 69v38" stroke="#3b235c" stroke-width="5"/>
+      <text x="105" y="40" class="h">质点</text>
+      <text x="105" y="70" class="body">写入根实体 Pos</text>
+    </g>
+
+    <g transform="translate(995 365)">
+      <rect x="18" y="16" width="56" height="56" fill="#ffcf66" stroke="#3b235c" stroke-width="4" transform="rotate(18 46 44)"/>
+      <text x="105" y="40" class="h">普通刚体</text>
+      <text x="105" y="70" class="body">写入 Pos 与四元数旋转</text>
+    </g>
+
+    <g transform="translate(995 475)">
+      <circle cx="46" cy="68" r="20" fill="#55b8a9" stroke="#3b235c" stroke-width="4"/>
+      <rect x="18" y="2" width="56" height="56" fill="#ef6f61" stroke="#3b235c" stroke-width="4" transform="rotate(-12 46 30)"/>
+      <path d="M46 50v-8" stroke="#3b235c" stroke-width="4"/>
+      <text x="105" y="40" class="h">复合刚体</text>
+      <text x="105" y="70" class="body">根实体定位，乘客展示旋转</text>
+    </g>
+  </g>
+
+  <path d="M230 590v59h135" fill="none" stroke="#796b84" stroke-width="4" stroke-dasharray="10 9" marker-end="url(#arrow)"/>
+  <rect x="380" y="616" width="400" height="66" rx="33" fill="#fff" stroke="#ddd5e5" stroke-width="3"/>
+  <text x="580" y="645" text-anchor="middle" class="code">_store</text>
+  <text x="580" y="671" text-anchor="middle" class="body">保存实例数据，是另一条独立的数据通路</text>
+</svg>

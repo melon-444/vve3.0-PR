@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" width="1400" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">模拟器常量表的恢复与覆盖</title>
+  <desc id="desc">模拟器每次运行先加载 VVE 默认物理常量，再覆盖自定义值，然后整轮回调共享最终常量表。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1l10 5-10 5z" fill="#5b2cb1"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#28153f" flood-opacity=".13"/></filter>
+    <style>.title{font:700 34px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.h{font:700 23px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.body{font:500 17px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#5d5268}.code{font:700 17px Consolas,"Microsoft YaHei",monospace;fill:#3b235c}</style>
+  </defs>
+  <rect width="1400" height="720" fill="#f7f8fb"/>
+  <text x="70" y="70" class="title">每轮模拟都先恢复默认常量，再应用局部覆盖</text>
+  <text x="70" y="103" class="body">先恢复默认值可避免前一个模拟器和未来新增常量残留</text>
+  <path d="M0 124h1400" stroke="#e2dced" stroke-width="2"/>
+
+  <g filter="url(#shadow)">
+    <rect x="55" y="190" width="330" height="415" rx="8" fill="#fff"/>
+    <text x="220" y="238" text-anchor="middle" class="h">1. 默认物理常量</text>
+    <rect x="90" y="275" width="260" height="235" rx="8" fill="#ece8f1" stroke="#796b84" stroke-width="3"/>
+    <text x="115" y="316" class="code">vve_gravity</text>
+    <text x="115" y="353" class="code">vve_*_friction</text>
+    <text x="115" y="390" class="code">vve_*_c</text>
+    <text x="115" y="427" class="code">grab_depth_*</text>
+    <text x="115" y="464" class="code">material constants</text>
+    <text x="220" y="557" text-anchor="middle" class="code">function vve:_consts</text>
+  </g>
+
+  <path d="M395 398h88" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="495" y="190" width="330" height="415" rx="8" fill="#fff"/>
+    <text x="660" y="238" text-anchor="middle" class="h">2. 模拟器覆盖</text>
+    <rect x="530" y="275" width="260" height="235" rx="8" fill="#fff7dc" stroke="#d19b24" stroke-width="3"/>
+    <text x="555" y="316" class="code"># keep gravity</text>
+    <text x="555" y="360" class="code">grab_friction = 9500</text>
+    <text x="555" y="404" class="code">solid_friction = 9500</text>
+    <text x="555" y="448" class="code">tangent = 2500</text>
+    <text x="660" y="557" text-anchor="middle" class="code">&lt;simulator&gt;/_consts</text>
+  </g>
+
+  <path d="M835 398h88" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="935" y="190" width="410" height="415" rx="8" fill="#e9f7fa" stroke="#66b9ca" stroke-width="3"/>
+    <text x="1140" y="238" text-anchor="middle" class="h">3. 本轮物理环境</text>
+    <circle cx="1140" cy="386" r="112" fill="#fff" stroke="#198ca4" stroke-width="5"/>
+    <path d="M1140 386l-38-82M1140 386l89-37M1140 386l65 75M1140 386l-85 64" stroke-width="7" stroke-linecap="round"/>
+    <path d="M1140 386l-38-82" stroke="#5b2cb1"/><path d="M1140 386l89-37" stroke="#ef6f61"/><path d="M1140 386l65 75" stroke="#55b8a9"/><path d="M1140 386l-85 64" stroke="#d19b24"/>
+    <g fill="#3b235c"><circle cx="1102" cy="304" r="9"/><circle cx="1229" cy="349" r="9"/><circle cx="1205" cy="461" r="9"/><circle cx="1055" cy="450" r="9"/></g>
+    <text x="1140" y="542" text-anchor="middle" class="body">所有 tick 回调共享最终常量表</text>
+    <text x="1140" y="574" text-anchor="middle" class="body">下一模拟器运行前会重新恢复默认值</text>
+  </g>
+</svg>

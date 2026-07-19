@@ -1,4 +1,4 @@
-#vve:point/_apply_friction
+#vve:point/_receive_friction
 # 应用摩擦响应
 # 输入<friction_response,int,1w>
 

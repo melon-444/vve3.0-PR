@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 760" width="1400" height="760" role="img" aria-labelledby="title desc">
+  <title id="title">介质探测与响应流程</title>
+  <desc id="desc">碰撞点查询方块或实体介质，介质返回法向、位移、冲量、摩擦和材质信息，运动模型据此更新。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1l10 5-10 5z" fill="#5b2cb1"/></marker>
+    <marker id="back" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1l10 5-10 5z" fill="#198ca4"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#28153f" flood-opacity=".13"/></filter>
+    <style>
+      .title{font:700 34px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.h{font:700 24px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.body{font:500 18px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#5d5268}.code{font:700 17px Consolas,"Microsoft YaHei",monospace;fill:#3b235c}
+    </style>
+  </defs>
+  <rect width="1400" height="760" fill="#f7f8fb"/>
+  <text x="70" y="70" class="title">一次介质探测如何完成</text>
+  <text x="70" y="101" class="body">碰撞点提出空间查询，介质返回响应，运动模型负责应用结果</text>
+  <path d="M0 122h1400" stroke="#e2dced" stroke-width="2"/>
+
+  <g filter="url(#shadow)">
+    <rect x="55" y="215" width="260" height="360" rx="8" fill="#fff"/>
+    <text x="185" y="265" text-anchor="middle" class="h">碰撞点输入</text>
+    <circle cx="185" cy="343" r="31" fill="#ef6f61" stroke="#3b235c" stroke-width="5"/>
+    <path d="M220 343h63" stroke="#5b2cb1" stroke-width="6" marker-end="url(#arrow)"/>
+    <rect x="89" y="408" width="192" height="122" rx="6" fill="#fff3d2"/>
+    <text x="185" y="443" text-anchor="middle" class="code">center</text>
+    <text x="185" y="478" text-anchor="middle" class="code">velocity</text>
+    <text x="185" y="513" text-anchor="middle" class="code">c_mass</text>
+  </g>
+
+  <path d="M332 335h91" stroke="#5b2cb1" stroke-width="6" marker-end="url(#arrow)"/>
+  <text x="378" y="313" text-anchor="middle" class="body">查询</text>
+
+  <g filter="url(#shadow)">
+    <rect x="440" y="165" width="500" height="500" rx="8" fill="#fff"/>
+    <text x="690" y="215" text-anchor="middle" class="h">介质模型</text>
+    <rect x="470" y="245" width="210" height="170" rx="6" fill="#e9f7fa" stroke="#198ca4" stroke-width="4"/>
+    <path d="M496 315c18-28 61-19 61 14 25-15 58 5 48 34H496c-20-7-18-35 0-48z" fill="#dceff4" stroke="#198ca4" stroke-width="4"/>
+    <path d="M494 372h162" stroke="#70b7c7" stroke-width="12"/>
+    <text x="575" y="397" text-anchor="middle" class="body">空气与液体</text>
+
+    <rect x="700" y="245" width="210" height="170" rx="6" fill="#fff7dc" stroke="#d19b24" stroke-width="4"/>
+    <path d="M725 365h160v-82h-78l-82 82z" fill="#b96755" stroke="#3b235c" stroke-width="5"/>
+    <path d="M807 283l78 82" stroke="#fff" stroke-width="5"/>
+    <text x="805" y="397" text-anchor="middle" class="body">方块与斜面</text>
+
+    <rect x="470" y="439" width="440" height="175" rx="6" fill="#f1edf6" stroke="#8d62d4" stroke-width="4"/>
+    <polygon points="570,462 636,500 570,538 504,500" fill="#d7c3f6" stroke="#5b2cb1" stroke-width="4"/>
+    <polygon points="504,500 570,538 570,571 504,533" fill="#70b7c7" stroke="#5b2cb1" stroke-width="4"/>
+    <polygon points="636,500 570,538 570,571 636,533" fill="#55b8a9" stroke="#5b2cb1" stroke-width="4"/>
+    <rect x="686" y="481" width="177" height="69" rx="5" fill="#ffcf66" stroke="#3b235c" stroke-width="4"/>
+    <text x="775" y="523" text-anchor="middle" class="code">check_material</text>
+    <text x="690" y="590" text-anchor="middle" class="body">实体介质：可以静止，也可以运动</text>
+  </g>
+
+  <path d="M958 335h89" stroke="#5b2cb1" stroke-width="6" marker-end="url(#arrow)"/>
+  <text x="1002" y="313" text-anchor="middle" class="body">返回</text>
+  <path d="M1047 516H958" stroke="#198ca4" stroke-width="5" marker-end="url(#back)"/>
+  <text x="1002" y="550" text-anchor="middle" class="body">应用</text>
+
+  <g filter="url(#shadow)">
+    <rect x="1065" y="180" width="285" height="450" rx="8" fill="#fff"/>
+    <text x="1208" y="230" text-anchor="middle" class="h">介质响应</text>
+    <g class="body">
+      <rect x="1100" y="270" width="215" height="45" rx="5" fill="#e6f5f2"/><text x="1208" y="299" text-anchor="middle">表面法向与深度</text>
+      <rect x="1100" y="328" width="215" height="45" rx="5" fill="#ede5fa"/><text x="1208" y="357" text-anchor="middle">位移修正</text>
+      <rect x="1100" y="386" width="215" height="45" rx="5" fill="#fff3d2"/><text x="1208" y="415" text-anchor="middle">反弹与碰撞冲量</text>
+      <rect x="1100" y="444" width="215" height="45" rx="5" fill="#e9f7fa"/><text x="1208" y="473" text-anchor="middle">摩擦与流体阻力</text>
+      <rect x="1100" y="502" width="215" height="45" rx="5" fill="#fde8e5"/><text x="1208" y="531" text-anchor="middle">材质与声音信息</text>
+    </g>
+    <path d="M1100 574h215" stroke="#ddd5e5" stroke-width="2"/>
+    <text x="1208" y="607" text-anchor="middle" class="body">运动模型负责更新状态</text>
+  </g>
+</svg>

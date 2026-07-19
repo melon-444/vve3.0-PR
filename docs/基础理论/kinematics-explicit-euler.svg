@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" width="1400" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">显式欧拉运动学迭代</title>
+  <desc id="desc">左侧展示位置按旧速度推进，右侧展示刚体沿四元数旋转轨迹推进并重建局部坐标系。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1l10 5-10 5z" fill="#5b2cb1"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#28153f" flood-opacity=".13"/>
+    </filter>
+    <style>
+      .title{font:700 34px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}
+      .h{font:700 25px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}
+      .body{font:500 18px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#5d5268}
+      .math{font:700 22px Cambria Math,"Microsoft YaHei",serif;fill:#3b235c}
+      .code{font:700 18px Consolas,"Microsoft YaHei",monospace;fill:#3b235c}
+    </style>
+  </defs>
+
+  <rect width="1400" height="720" fill="#f7f8fb"/>
+  <text x="70" y="70" class="title">运动学迭代只回答：按照当前速度，下一步在哪里？</text>
+  <text x="70" y="103" class="body">受力不会在本阶段计算；它将在后续力学迭代中改变下一步所用的速度</text>
+  <path d="M0 124h1400" stroke="#e2dced" stroke-width="2"/>
+
+  <g filter="url(#shadow)">
+    <rect x="65" y="165" width="590" height="490" rx="8" fill="#fff"/>
+    <text x="105" y="215" class="h">平动：使用旧速度推进位置</text>
+    <path d="M125 520h455M175 575V270" stroke="#cfc6d9" stroke-width="4" stroke-linecap="round"/>
+    <path d="M175 300l-12 22h24zM558 520l-22-12v24z" fill="#cfc6d9"/>
+    <circle cx="265" cy="455" r="25" fill="#198ca4" stroke="#3b235c" stroke-width="4"/>
+    <circle cx="500" cy="330" r="25" fill="#70b7c7" stroke="#3b235c" stroke-width="4"/>
+    <path d="M291 441L468 347" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+    <path d="M265 455v65M500 330v190" stroke="#9b8ca8" stroke-width="3" stroke-dasharray="8 7"/>
+    <text x="242" y="492" class="code">pₙ</text>
+    <text x="506" y="314" class="code">pₙ₊₁</text>
+    <text x="367" y="370" class="code">vₙ</text>
+    <rect x="135" y="556" width="455" height="67" rx="8" fill="#e9f7fa"/>
+    <text x="362" y="598" text-anchor="middle" class="math">pₙ₊₁ = pₙ + vₙ</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="745" y="165" width="590" height="490" rx="8" fill="#fff"/>
+    <text x="785" y="215" class="h">转动：沿既定四元数轨迹推进</text>
+    <circle cx="1037" cy="397" r="142" fill="none" stroke="#d8d1df" stroke-width="5" stroke-dasharray="10 9"/>
+    <path d="M923 481a142 142 0 0 1 201-197" fill="none" stroke="#5b2cb1" stroke-width="8" marker-end="url(#arrow)"/>
+    <circle cx="923" cy="481" r="20" fill="#198ca4" stroke="#3b235c" stroke-width="4"/>
+    <circle cx="1124" cy="284" r="20" fill="#ffcf66" stroke="#3b235c" stroke-width="4"/>
+    <text x="822" y="513" class="code">q_start</text>
+    <text x="1149" y="280" class="code">q(φ)</text>
+    <path d="M923 481l-67-63" stroke="#198ca4" stroke-width="6" marker-end="url(#arrow)"/>
+    <text x="786" y="406" class="code">q_orth</text>
+    <path d="M1124 284l91-24M1124 284l34 88M1124 284l-50-74" stroke-width="6" stroke-linecap="round"/>
+    <path d="M1124 284l91-24" stroke="#ef6f61" marker-end="url(#arrow)"/>
+    <path d="M1124 284l34 88" stroke="#55b8a9" marker-end="url(#arrow)"/>
+    <path d="M1124 284l-64-54" stroke="#d19b24" marker-end="url(#arrow)"/>
+    <text x="1222" y="260" class="code">i</text>
+    <text x="1160" y="397" class="code">j</text>
+    <text x="1036" y="226" class="code">k</text>
+    <rect x="785" y="556" width="510" height="67" rx="8" fill="#fff7dc"/>
+    <text x="1040" y="598" text-anchor="middle" class="math">q(φ) = q_start cos φ + q_orth sin φ</text>
+  </g>
+</svg>

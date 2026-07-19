@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" width="1400" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">多个模拟器隔离不同的物理环境</title>
+  <desc id="desc">用户 A 与用户 B 共享同一套 VVE 引擎，但通过各自的模拟器加载不同常量表并调度不同物体。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1l10 5-10 5z" fill="#5b2cb1"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#28153f" flood-opacity=".13"/></filter>
+    <style>.title{font:700 34px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.h{font:700 24px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.body{font:500 17px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#5d5268}.code{font:700 17px Consolas,"Microsoft YaHei",monospace;fill:#3b235c}</style>
+  </defs>
+  <rect width="1400" height="720" fill="#f7f8fb"/>
+  <text x="70" y="70" class="title">共享同一个 VVE 引擎，不必共享同一个物理世界</text>
+  <text x="70" y="103" class="body">模拟器按顺序加载自己的状态与常量，完整运行后再交还全局临时空间</text>
+  <path d="M0 124h1400" stroke="#e2dced" stroke-width="2"/>
+
+  <g filter="url(#shadow)">
+    <rect x="55" y="185" width="290" height="420" rx="8" fill="#fff"/>
+    <text x="200" y="230" text-anchor="middle" class="h">用户 A 的模拟器</text>
+    <rect x="90" y="265" width="220" height="115" rx="8" fill="#e9f7fa" stroke="#198ca4" stroke-width="3"/>
+    <text x="112" y="302" class="code">gravity = 300</text>
+    <text x="112" y="335" class="code">friction = 9500</text>
+    <text x="112" y="368" class="code">rate = 1 / 1</text>
+    <g transform="translate(92 425)">
+      <rect x="0" y="0" width="78" height="78" fill="#70b7c7" stroke="#3b235c" stroke-width="4" transform="rotate(-10 39 39)"/>
+      <circle cx="143" cy="39" r="38" fill="#55b8a9" stroke="#3b235c" stroke-width="4"/>
+      <path d="M143 8v62M112 39h62" stroke="#fff" stroke-width="5"/>
+    </g>
+    <text x="200" y="556" text-anchor="middle" class="body">只调度 A 的物体集合</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1055" y="185" width="290" height="420" rx="8" fill="#fff"/>
+    <text x="1200" y="230" text-anchor="middle" class="h">用户 B 的模拟器</text>
+    <rect x="1090" y="265" width="220" height="115" rx="8" fill="#fff7dc" stroke="#d19b24" stroke-width="3"/>
+    <text x="1112" y="302" class="code">gravity = 120</text>
+    <text x="1112" y="335" class="code">friction = 7500</text>
+    <text x="1112" y="368" class="code">rate = 1 / 4</text>
+    <g transform="translate(1095 425)">
+      <polygon points="42,0 82,25 67,72 17,72 2,25" fill="#ffcf66" stroke="#3b235c" stroke-width="4"/>
+      <rect x="118" y="5" width="70" height="70" fill="#ef6f61" stroke="#3b235c" stroke-width="4" transform="rotate(18 153 40)"/>
+    </g>
+    <text x="1200" y="556" text-anchor="middle" class="body">只调度 B 的物体集合</text>
+  </g>
+
+  <path d="M355 395h128" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+  <path d="M1045 395H917" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="495" y="215" width="410" height="360" rx="8" fill="#eadcff" stroke="#8952e2" stroke-width="3"/>
+    <text x="700" y="263" text-anchor="middle" class="h">共享的 VVE 引擎</text>
+    <path d="M580 324h240M580 466h240" stroke="#5b2cb1" stroke-width="5"/>
+    <g transform="translate(610 342)">
+      <circle cx="90" cy="54" r="48" fill="#fff" stroke="#5b2cb1" stroke-width="5"/>
+      <circle cx="90" cy="54" r="18" fill="#5b2cb1"/>
+      <path d="M90 0v24M90 84v24M36 54h24m60 0h24M52 16l17 17m42 42l17 17M52 92l17-17m42-42l17-17" stroke="#5b2cb1" stroke-width="12"/>
+    </g>
+    <text x="700" y="504" text-anchor="middle" class="code">临时记分板 / 物理函数 / 介质模型</text>
+    <text x="700" y="540" text-anchor="middle" class="body">共享实现，顺序复用，不嵌套、不并行</text>
+  </g>
+
+  <rect x="445" y="625" width="510" height="55" rx="27" fill="#fff" stroke="#ddd5e5" stroke-width="3"/>
+  <text x="700" y="660" text-anchor="middle" class="body">A 完整运行并保存 → B 再加载并完整运行</text>
+</svg>

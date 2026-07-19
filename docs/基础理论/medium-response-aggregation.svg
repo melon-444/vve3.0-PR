@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" width="1400" height="720" role="img" aria-labelledby="title desc">
+  <title id="title">多碰撞点介质响应汇总</title>
+  <desc id="desc">多个碰撞点分别产生响应，接收器按不同规则合并摩擦、位移、冲量、法线与力偶矩，形成物体级介质响应。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1l10 5-10 5z" fill="#5b2cb1"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#28153f" flood-opacity=".13"/></filter>
+    <style>.title{font:700 34px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.h{font:700 23px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#241536}.body{font:500 17px "Microsoft YaHei","Noto Sans SC",sans-serif;fill:#5d5268}.code{font:700 17px Consolas,"Microsoft YaHei",monospace;fill:#3b235c}</style>
+  </defs>
+  <rect width="1400" height="720" fill="#f7f8fb"/>
+  <text x="70" y="70" class="title">碰撞点数量增加，不应让响应无限放大</text>
+  <text x="70" y="103" class="body">每个点独立探测，receiver 按响应类型使用不同的汇总规则</text>
+  <path d="M0 124h1400" stroke="#e2dced" stroke-width="2"/>
+
+  <g filter="url(#shadow)">
+    <rect x="55" y="170" width="315" height="480" rx="8" fill="#fff"/>
+    <text x="212" y="215" text-anchor="middle" class="h">多个单点响应</text>
+    <g transform="translate(95 250)">
+      <g fill="#ef6f61" stroke="#3b235c" stroke-width="3"><circle cx="35" cy="35" r="16"/><circle cx="200" cy="35" r="16"/><circle cx="35" cy="270" r="16"/><circle cx="200" cy="270" r="16"/></g>
+      <path d="M52 45l65 50M184 45l-58 50M52 260l65-50M184 260l-58-50" stroke="#5b2cb1" stroke-width="5" marker-end="url(#arrow)"/>
+      <rect x="83" y="104" width="92" height="92" fill="#eadcff" stroke="#3b235c" stroke-width="5" transform="rotate(12 129 150)"/>
+      <text x="117" y="334" text-anchor="middle" class="code">c_mass = mass</text>
+    </g>
+    <text x="212" y="615" text-anchor="middle" class="body">每个点携带完整物体质量</text>
+  </g>
+
+  <path d="M380 410h100" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="490" y="170" width="390" height="480" rx="8" fill="#e9f7fa" stroke="#66b9ca" stroke-width="3"/>
+    <text x="685" y="215" text-anchor="middle" class="h">响应接收器 receiver</text>
+    <g transform="translate(535 255)">
+      <rect width="300" height="52" rx="6" fill="#fff"/><text x="20" y="33" class="code">friction → min</text>
+      <rect y="67" width="300" height="52" rx="6" fill="#fff"/><text x="20" y="100" class="code">shift → 按轴合并</text>
+      <rect y="134" width="300" height="52" rx="6" fill="#fff"/><text x="20" y="167" class="code">impulse → 累加后平均</text>
+      <rect y="201" width="300" height="52" rx="6" fill="#fff"/><text x="20" y="234" class="code">normal → 最大法向速度</text>
+      <rect y="268" width="300" height="52" rx="6" fill="#fff"/><text x="20" y="301" class="code">couple → 分解并平均</text>
+    </g>
+    <text x="685" y="614" text-anchor="middle" class="body">_clear_receiver → 多次 receive → _receive_over</text>
+  </g>
+
+  <path d="M890 410h100" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="1000" y="170" width="345" height="480" rx="8" fill="#fff"/>
+    <text x="1172" y="215" text-anchor="middle" class="h">物体级介质响应</text>
+    <circle cx="1172" cy="350" r="92" fill="#fff7dc" stroke="#d19b24" stroke-width="5"/>
+    <path d="M1172 350l82-45" stroke="#ef6f61" stroke-width="8" marker-end="url(#arrow)"/>
+    <path d="M1172 350l-55-70" stroke="#55b8a9" stroke-width="7" marker-end="url(#arrow)"/>
+    <path d="M1172 350c48 35 34 83-8 100" fill="none" stroke="#5b2cb1" stroke-width="7" marker-end="url(#arrow)"/>
+    <text x="1172" y="495" text-anchor="middle" class="code">shift / impulse / couple</text>
+    <text x="1172" y="530" text-anchor="middle" class="code">friction / contact normal</text>
+    <text x="1172" y="591" text-anchor="middle" class="body">供广义力学迭代统一应用</text>
+  </g>
+</svg>
