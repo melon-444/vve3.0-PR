@@ -1,73 +1,60 @@
-# vve3.0使用文档
+# VVE 3.0 使用文档
 
-&gt; 适用版本：1.21.5 \~ 26.2  
-&gt; 前置依赖：math3.1, math3.1_lalib, math3.1_gelib  
-&gt; 命名空间：vve, vve_examples, module_control  
+VVE（Vanilla Vehicle Engine）是面向原版 Minecraft 的高性能物理引擎数据包。
+
+| 项目 | 信息 |
+| --- | --- |
+| 适用版本 | Minecraft 1.21.5 ~ 26.2 |
+| 前置依赖 | `math3.1`、`math3.1_lalib`、`math3.1_gelib` |
+| 命名空间 | `vve`、`vve_examples`、`module_control` |
+
+**快速导航：** [基本介绍](#1-基本介绍) · [安装方法](#2-安装方法) · [快速开始](#3-快速开始) · [常用接口](#4-常用接口介绍) · [文档导航](#5-文档导航) · [项目历史](#6-项目历史)
 
 ---
 
-## 1.基本介绍
+| 载具与斜面 | 五方偏方面体 |
+| :---: | :---: |
+| ![载具与斜面](images/output_1.gif "载具与斜面") | ![五方偏方面体](images/output.gif "五方偏方面体") |
 
-### 什么是vve？
+## 1. 基本介绍
 
-vve (vanilla vehicle engine) 是一款由小豆8593 (游戏ID：xiaodou123) 开发的以性能和实用性为主的原版Minecraft物理引擎数据包。
+### 什么是 VVE？
 
-<details>
-<summary>vve的诞生历史</summary>
-<div style="background-color: #3936dc34; border-radius: 10px; padding: 20px; position: relative;">
-最早的vve1诞生于mc1.17时代，那时展示实体尚未出现。vve1探索了使用盔甲架组成多实体结构的技术，已经能够模拟出汽车、飞机、船等多种多样的载具效果。
+VVE（Vanilla Vehicle Engine）是一款由小豆 8593（游戏 ID：`xiaodou123`）开发的原版 Minecraft 物理引擎数据包，以性能和实用性为主。
 
-【[mc命令] 载具引擎(vve)演示视频】 https://www.bilibili.com/video/BV1yU4y1k7Ag/
+VVE 1 与 VVE 2 的诞生过程请查看[项目历史](#6-项目历史)。
 
-受限于当时的原版命令技术，vve1引擎的性能压力成为主要瓶颈。当时在游戏中几乎只能实时运行1~3辆载具。
+随着近些年作者逐步建立原版 Minecraft 性能理论，并进行了越来越多的性能测试，作者决定开发一个整合前两代经验的 VVE 3 引擎。
 
-vve2诞生于一年后的mc1.19.4时代，一个重要的技术更新：展示实体出现了。vve2探索了基于展示实体的刚体模拟技术，实现了球陀螺状刚体的碰撞、着陆、摩擦等复杂效果，并提出了vve的重要概念：碰撞点模型。
+VVE 3 实现了对性能的精准把控，最多可以支持上百个物体实时运行。在功能上，VVE 既可以模拟载具，也可以模拟多面体骰子一类的小物件，并支持惯性张量计算。
 
-【[mc命令] 刚体物理引擎vve_2.0开发日志】 https://www.bilibili.com/video/BV13j411o7wN/
+> 演示视频：[可以在 MC 跑团了？纯指令物理模拟实例——跑团骰子【模组发布】](https://www.bilibili.com/video/BV1LX9fB8Ek3/)
 
-vve2引擎并没有支持惯性张量的计算，其次vve2不支持模拟载具，最后性能仍然是vve2获得实用性的一个瓶颈：当时最多实时模拟10~20个刚体。
-</div>
-</details>
+### 可以用 VVE 做什么？
 
-随着近些年作者对原版MC性能理论的建立，以及进行了越来越多的性能测试，作者决定开发一个整合了前两代经验的vve3引擎。
+1. **设计质点模型**  
+   性能最好的物理模型。质点模型也可以使用介质探测函数，与刚体共享同一套世界介质模型。
+2. **设计刚体模型**  
+   由多个碰撞点支撑的物理体，使用四元数旋转，可以进行着陆与姿态修正，并支持外部访问其局部坐标系。
+3. **设计介质模型**  
+   通常是静止不动的世界元素，分为实体和方块两类，支持斜面、曲面等复杂建模。
 
-vve3实现了对性能的精准把控，最多可以支持上百个物体实时运行。在功能上，vve既可以模拟载具，又可以模拟像多面体骰子这样的小物件，支持了对惯性张量的计算。
+以上是 VVE 3 最基本的三类模型。更复杂的物理体可由以上三者组合，再配合实现特殊功能的程序构建。
 
-【可以在MC跑团了？纯指令物理模拟实例——跑团骰子【模组发布】】 https://www.bilibili.com/video/BV1LX9fB8Ek3/
+## 2. 安装方法
 
-### 可以用vve来做什么？
+除了 VVE 3 本体数据包之外，还需要安装以下依赖：
 
-1. 设计质点模型：
-
-        性能最好的物理模型。质点模型也可以使用介质探测函数，  
-        与刚体共享同一套世界介质模型。
-
-2. 设计刚体模型：  
-
-        由多个碰撞点支撑的物理体，使用四元数旋转，可以进行着陆与姿态修正，  
-        支持外部访问其局部坐标系。
-
-3. 设计介质模型：
-
-        通常是静止不动的世界元素，分为实体和方块两类。  
-        支持斜面、曲面等复杂建模。
-
-以上是vve3最基本的三类模型。更复杂的物理体由以上三者组合，并加上特殊功能的程序来实现。
-
-## 2.安装方法
-
-除了vve3本体数据包之外，您还需要安装以下几个依赖：
-
-* 前置数据包
-  1. [数学库](https://github.com/xiaodou8593/math3.1) 3.1.2及以上版本
-  2. [线性代数库](https://github.com/xiaodou8593/math3.1_lalib) 3.1.2及以上版本
-  3. [图形库](https://github.com/xiaodou8593/math3.1_gelib) 3.1.2及以上版本（可选，用于可视化测试）
-* 模块构建器
-  1. [mot](https://github.com/xiaodou8593/mot_2.0) 2.0.0及以上版本
+| 类型 | 项目 | 版本要求 | 说明 |
+| --- | --- | --- | --- |
+| 前置数据包 | [数学库](https://github.com/xiaodou8593/math3.1) | 3.1.2+ | 必需 |
+| 前置数据包 | [线性代数库](https://github.com/xiaodou8593/math3.1_lalib) | 3.1.2+ | 必需 |
+| 前置数据包 | [图形库](https://github.com/xiaodou8593/math3.1_gelib) | 3.1.2+ | 可选，用于可视化测试 |
+| 模块构建器 | [MOT](https://github.com/xiaodou8593/mot_2.0) | 2.0.0+ | 必需 |
 
 请手动初始化所有数据包：
 
-```bash
+```mcfunction
 function math:_init
 function math:_init_la
 function vve:_init
@@ -75,15 +62,16 @@ function vve:_init
 
 如果额外安装了图形库：
 
-```bash
+```mcfunction
 function math:_init_ge
 function math:particles/_load_1214
 ```
 <details>
 <summary>对于原版模组作者</summary>
-如果您是原版模组作者，希望所有数据包在load时自动加载，请打开`#minecraft:load`标签的函数，追加以下内容：
 
-```bash
+如果您是原版模组作者，希望所有数据包在 `load` 时自动加载，请打开 `#minecraft:load` 标签的函数，追加以下内容：
+
+```mcfunction
 function math:_version
 execute unless score version int matches 312.. run return run tellraw @a {"text":"[vve3]: 依赖错误，请安装math3.1.2及以上版本！","color":"red","click_event":{"action":"open_url","url":"https://github.com/xiaodou8593/math3.1"}}
 execute unless score math_init_version int = version int run function math:_init
@@ -99,34 +87,37 @@ execute unless score vve_init_version int = version_vve int run function vve:_in
 
 如果您也希望图形库自动加载：
 
-```bash
+```mcfunction
 function math:_version_ge
 execute unless score version_ge int matches 312.. run return run tellraw @a {"text":"[vve3]: 依赖错误，请安装math3.1.2_gelib及以上版本！","color":"red","click_event":{"action":"open_url","url":"https://github.com/xiaodou8593/math3.1_gelib"}}
 execute unless score math_ge_init_version int = version_ge int run function math:_init_ge
 function math:particles/_load_1214
 ```
+
 </details>
 
-## 3.快速开始
+## 3. 快速开始
 
-运行mot2.0.ahk，快捷创建一个数据包。
+### 3.1 创建项目
 
-在datapacks目录下，按快捷键ctrl+p。
+1. 运行 `mot2.0.ahk`，在 `datapacks` 目录下按 <kbd>Ctrl</kbd> + <kbd>P</kbd>，快捷创建一个数据包。
 
-* 输入数据包名称：vve_test
-* 输入命名空间：vve_test
+   - 数据包名称：`vve_test`
+   - 命名空间：`vve_test`
 
-模块目录(data/vve_test/function文件夹)此时自动弹出，在此处按ctrl+m运行mot记忆栈，输入以下命令：
+2. 模块目录（`data/vve_test/function` 文件夹）自动弹出后，按 <kbd>Ctrl</kbd> + <kbd>M</kbd> 运行 MOT 记忆栈，输入以下命令：
 
-```
+```text
 push vve_block_1.0
 ```
 
-使窗口焦点回到模块目录，按快捷键ctrl+o创建对象格式文档。**请注意该步操作在运行push命令之后，才能加载预设字段。**
+3. 使窗口焦点回到模块目录，按 <kbd>Ctrl</kbd> + <kbd>O</kbd> 创建对象格式文档。
 
-回到mot记忆栈，依次运行以下命令构建模块：
+   > **注意：** 必须先运行 `push` 命令，才能在对象格式文档中加载预设字段。
 
-```
+4. 回到 MOT 记忆栈，依次运行以下命令构建模块：
+
+```text
 run
 init
 sync
@@ -134,9 +125,11 @@ stop
 pop
 ```
 
-接下来，我们继续为模块构建自动化测试：
+### 3.2 运行自动化测试
 
-```
+继续为模块构建自动化测试：
+
+```text
 push vve_test_1.0
 run
 init
@@ -146,74 +139,312 @@ pop
 stop
 ```
 
-回到mc聊天栏执行命令，重新加载数据包，运行自动化测试：
+回到 Minecraft 聊天栏执行命令，重新加载数据包并运行自动化测试：
 
-```
+```mcfunction
 reload
 # 如果是地形正常生成的世界，请使用fill确保测试坐标附近空旷
 execute positioned 0 100 0 run fill ~-20 ~-9 ~-20 ~20 ~9 ~20 air
 function vve_test:test/_auto
 ```
 
-由于vve_block_1.0是无介质刚体模型，物体之间没有碰撞检测。因此应观察到前四个测试正常运行，而inter_bounce碰撞测试中两个方块相互穿过。
+> `vve_block_1.0` 是无介质刚体模型，物体之间**没有碰撞检测**。因此应观察到前四个测试正常运行，而 `inter_bounce` 碰撞测试中的两个方块会相互穿过。
+
+### 3.3 添加可投掷 TNT
+
+回到命名空间 `vve_test`，新建 `advancement` 文件夹，再新建 `crc.json` 用于右键检测：
+
+```json
+{
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:using_item"
+    }
+  },
+  "rewards": {
+    "function": "vve_test:crc"
+  }
+}
+```
+
+回到 `function` 文件夹，新建 `crc.mcfunction`：
+
+```mcfunction
+# vve_test:crc
+# 进度 vve_test:crc 调用
+
+advancement revoke @s only vve_test:crc
+
+# 如果主手持有特殊tnt物品就消耗并扔出
+execute if items entity @s weapon.mainhand minecraft:tnt[minecraft:custom_data={vve_test:1b}] \
+	run return run function vve_test:throw_mainhand
+
+# 如果副手持有特殊tnt物品就消耗并扔出
+execute if items entity @s weapon.offhand minecraft:tnt[minecraft:custom_data={vve_test:1b}] \
+	run return run function vve_test:throw_offhand
+```
+
+新建 `throw_mainhand.mcfunction` 和 `throw_offhand.mcfunction`：
+
+```mcfunction
+# vve_test:throw_mainhand
+# vve_test:crc调用
+
+execute anchored eyes positioned ^ ^ ^0.5 run function vve_test:_throw_here
+
+item replace entity @s weapon.mainhand with air
+```
+
+```mcfunction
+# vve_test:throw_offhand
+# vve_test:crc调用
+
+execute anchored eyes positioned ^ ^ ^0.5 run function vve_test:_throw_here
+
+item replace entity @s weapon.offhand with air
+```
+
+新建 `_throw_here.mcfunction`：
+
+```mcfunction
+# vve_test:_throw_here
+
+data modify storage vve_test:io input set from storage vve_test:class vve_test_plate
+function vve_test:_proj
+# 传入当前执行位置和朝向，设置初始姿态
+execute as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+# 根据当前局部坐标系，施加一个向前推进的冲量
+# 冲量作用点
+scoreboard players operation impulse_x int = x int
+scoreboard players operation impulse_y int = y int
+scoreboard players operation impulse_z int = z int
+# 冲量的矢量部分
+scoreboard players set u int 0
+scoreboard players set v int 0
+scoreboard players set w int 150000
+function math:uvw/_tofvec
+scoreboard players operation impulse_fx int = fvec_x int
+scoreboard players operation impulse_fy int = fvec_y int
+scoreboard players operation impulse_fz int = fvec_z int
+# 施加冲量
+execute as @e[tag=math_marker,limit=1] run function vve:object/_apply_impulse
+# 施加一个绕左轴旋转的力偶矩
+scoreboard players set u int 8000
+scoreboard players set v int 0
+scoreboard players set w int 0
+function math:uvw/_tofvec
+scoreboard players operation couple_x int = fvec_x int
+scoreboard players operation couple_y int = fvec_y int
+scoreboard players operation couple_z int = fvec_z int
+execute as @e[tag=math_marker,limit=1] run function vve:object/_apply_couple
+function vve_test:_model
+data modify storage vve_test:io input set from storage vve_test:io result
+
+# 实例化一个vve_test
+data modify entity @e[tag=math_marker,limit=1] Pos set from storage vve_test:io input.center
+execute at @e[tag=math_marker,limit=1] run function vve_test:_new
+
+# 设置销毁时间与回调函数
+execute as @e[tag=result,limit=1] run function marker_control:data/_get
+data modify storage marker_control:io result.del_func set value "vve_test:_del"
+execute as @e[tag=result,limit=1] run function marker_control:data/_store
+tag @e[tag=result,limit=1] add entity_todel
+
+scoreboard players set @e[tag=result,limit=1] killtime 60
+
+playsound minecraft:entity.tnt.primed
+```
+
+修改 `set_operation.mcfunction`：
+
+```mcfunction
+# vve_test:set_operation
+# vve_test:_new调用
+
+function vve_test:_get
+function vve_test:_update_display
+
+item replace entity @s container.0 with minecraft:tnt
+```
+
+修改 `_del.mcfunction`：
+
+```mcfunction
+# vve_test:_del
+# 销毁实体对象
+# 输入执行实体
+
+execute at @s run summon tnt ~ ~ ~ {fuse:0}
+kill @s
+```
+
+回到游戏，重新加载数据包，然后放置循环命令方块执行 `tick`：
+
+```mcfunction
+reload
+gamerule command_block_output false
+```
+
+```mcfunction
+function vve_test:tick
+```
+
+获取可投掷 TNT 物品：
+
+```mcfunction
+give @s minecraft:tnt[minecraft:custom_name="throwable",minecraft:custom_data={vve_test:1b},minecraft:consumable={consume_seconds:1024.0f},minecraft:max_stack_size=1]
+```
+
+## 4. 常用接口介绍
 
 接下来我们介绍模块的常用接口。
 
-* `$(module_prefix)`代表模块的前缀
-* `$(project_name)`代表模块的命名空间
-* `$(module_name)`代表模块名
+| 占位符 | 含义 |
+| --- | --- |
+| `$(module_prefix)` | 模块前缀 |
+| `$(project_name)` | 模块命名空间 |
+| `$(module_name)` | 模块名 |
 
-对于一个路径形如`data/namespace/function/foo/bar`的模块来说：
+对于路径形如 `data/namespace/function/foo/bar` 的模块：
 
-* `$(module_prefix)`为`"namespace:foo/bar/"`
-* `$(project_name)`为`"namespace"`
-* `$(module_name)`为`"bar"`
+| 占位符 | 值 |
+| --- | --- |
+| `$(module_prefix)` | `"namespace:foo/bar/"` |
+| `$(project_name)` | `"namespace"` |
+| `$(module_name)` | `"bar"` |
 
-对于上面的示例模块来说：
-* `$(module_prefix)`为`"vve_test:"`
-* `$(project_name)`为`"vve_test"`
-* `$(module_name)`为`"vve_test"`
+对于上面的 `vve_test` 示例模块：
+
+| 占位符 | 值 |
+| --- | --- |
+| `$(module_prefix)` | `"vve_test:"` |
+| `$(project_name)` | `"vve_test"` |
+| `$(module_name)` | `"vve_test"` |
 
 一个物体模块的常用接口如下：
 
-1. `$(module_prefix)init`
+### 4.1 `$(module_prefix)init`
 
-        初始化模块，创建所需的记分板和数据结构，并调用`$(module_prefix)_class`和`$(module_prefix)_consts`两个接口。
+初始化模块，创建所需的记分板和数据结构，并调用 `$(module_prefix)_class` 和 `$(module_prefix)_consts` 两个接口。
 
-2. `$(module_prefix)_class`
+### 4.2 `$(module_prefix)_class`
 
-        构建物体的数据模板。默认该物体的坐标、速度、角速度为0，  
-        初始姿态为z+方向0横滚角。  
-        <a,int,1w>为半边长，默认为0.25格  
-        <mass,int,1>为质量，默认为17kg  
-        <inertia,int,100>为惯量，默认为5kg·m^2
-        修改物体尺寸时，请注意惯量需要平方倍缩放。例如物体放大为2倍，惯量应放大为4倍。
-        修改物体质量时，请注意惯量需要等比例缩放。例如质量放大为3倍，惯量应放大为3倍。
-        数据模板储存在storage $(project_name):class $(module_name)_plate这个位置以供使用。
+构建物体的数据模板。物体的坐标、速度和角速度默认为 `0`，初始姿态为 z+ 方向、0 横滚角。
 
-3. `$(module_prefix)_consts`
+| 字段 | 含义 | 默认值 |
+| --- | --- | --- |
+| `<a,int,1w>` | 半边长 | 0.25 格 |
+| `<mass,int,1>` | 质量 | 17 kg |
+| `<inertia,int,100>` | 惯量 | 5 kg·m² |
 
-        设置该模块所需的常量。
+> **缩放规则**
+>
+> - 修改物体尺寸时，惯量需要按尺寸的平方倍缩放。例如物体放大为 2 倍，惯量应放大为 4 倍。
+> - 修改物体质量时，惯量需要等比例缩放。例如质量放大为 3 倍，惯量应放大为 3 倍。
 
-4. `$(module_prefix)_new`
+数据模板储存在 `storage $(project_name):class $(module_name)_plate`，以供后续使用。
 
-        输入物体的数据模板，并传入一个执行位置，生成模块实例。
-        实例的根实体输出为entity @e[tag=result,limit=1]
-        使用方法如下：
-        data modify storage $(project_name):io input set from storage $(project_name):class $(module_name)_plate
-        function $(module_prefix)_proj
-        # 使用世界实体和vve:object/_anchor_to方法加载当前位置和朝向的位置和姿态
-        execute as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
-        function $(module_prefix)_model
-        data modify storage $(project_name):io input set from storage $(project_name):io result
-        data modify entity @e[tag=math_marker,limit=1] Pos set from storage $(project_name):io input.center
-        execute at @e[tag=math_marker,limit=1] run function $(module_prefix)_new
-        execute as @e[tag=result,limit=1] run say hi
+### 4.3 `$(module_prefix)_consts`
 
-5. `$(module_prefix)_del`
+设置该模块所需的常量。
 
-        传入实例根实体为执行者，销毁模块实例。
-        使用方法如下：
-        execute @e[tag=$(project_name)_$(module_name),limit=1,sort=nearest] run function $(module_prefix)_del
+### 4.4 `$(module_prefix)_new`
 
-## 4.文档导航
+输入物体的数据模板并传入一个执行位置，生成模块实例。实例的根实体输出为 `entity @e[tag=result,limit=1]`。
+
+使用方法如下：
+
+```mcfunction
+data modify storage $(project_name):io input set from storage $(project_name):class $(module_name)_plate
+function $(module_prefix)_proj
+# 使用世界实体和 vve:object/_anchor_to 方法加载当前位置、朝向和姿态
+execute as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+function $(module_prefix)_model
+data modify storage $(project_name):io input set from storage $(project_name):io result
+data modify entity @e[tag=math_marker,limit=1] Pos set from storage $(project_name):io input.center
+execute at @e[tag=math_marker,limit=1] run function $(module_prefix)_new
+execute as @e[tag=result,limit=1] run say hi
+```
+
+### 4.5 `$(module_prefix)_del`
+
+传入实例根实体作为执行者，销毁模块实例。
+
+```mcfunction
+execute @e[tag=$(project_name)_$(module_name),limit=1,sort=nearest] run function $(module_prefix)_del
+```
+
+## 5. 文档导航
+
+<details>
+<summary><b>📦 基础理论</b> <i>(点击展开 9 个子项)</i></summary>
+
+- [模板, 模块, 接口](/docs/基础理论/模板,%20模块,%20接口.md)
+- [数据模板, 临时对象, 实例对象](/docs/基础理论/数据模板,%20临时对象,%20实例对象.md)
+- [模型：质点, 模型, 介质](/docs/基础理论/模型：质点,%20模型,%20介质.md)
+- [运动学迭代, 力学迭代, 运动同步](/docs/基础理论/运动学迭代,%20力学迭代,%20运动同步.md)
+- [介质探测, 介质响应](/docs/基础理论/介质探测,%20介质响应.md)
+- [常量表, 模拟器](/docs/基础理论/常量表,%20模拟器.md)
+- [运动慢放, 运动拆解](/docs/基础理论/运动慢放,%20运动拆解.md)
+- [降频优化, 静体优化](/docs/基础理论/降频优化,%20静体优化.md)
+- [局部子物理系统](/docs/基础理论/局部子物理系统.md)
+
+</details>
+
+<details>
+<summary><b>📦 预设模板</b> <i>(点击展开 3 个子项)</i></summary>
+
+- [物体模板](/docs/预设模板/物体模板.md)
+- [介质模板](/docs/预设模板/介质模板.md)
+- [其它模板](/docs/预设模板/其它模板.md)
+
+</details>
+
+<details>
+<summary><b>📦 内置模型</b> <i>(点击展开 3 个子项)</i></summary>
+
+- [物体模型](/docs/内置模型/物体模型.md)
+- [介质模型](/docs/内置模型/介质模型.md)
+- [其它模型](/docs/内置模型/其它模型.md)
+
+</details>
+
+<details>
+<summary><b>📦 示例展馆</b> <i>(点击展开 3 个子项)</i></summary>
+
+- [物体示例](/docs/示例展馆/物体示例.md)
+- [介质示例](/docs/示例展馆/介质示例.md)
+- [其它示例](/docs/示例展馆/其它示例.md)
+
+</details>
+
+<details>
+<summary><b>📦 工具模块</b> <i>(点击展开 7 个子项)</i></summary>
+
+- [介质探测函数](/docs/工具模块/介质探测函数.md)
+- [打印函数](/docs/工具模块/打印函数.md)
+- [其它函数](/docs/工具模块/其它函数.md)
+- [声音程序](/docs/工具模块/声音程序.md)
+- [着色器接口](/docs/工具模块/着色器接口.md)
+- [方块读取阵列](/docs/工具模块/方块读取阵列.md)
+- [自动化测试](/docs/工具模块/自动化测试.md)
+
+</details>
+
+## 6. 项目历史
+
+### VVE 1：盔甲架载具
+
+最早的 VVE 1 诞生于 Minecraft 1.17 时代，那时展示实体尚未出现。VVE 1 探索了使用盔甲架组成多实体结构的技术，已经能够模拟汽车、飞机、船等多种载具效果。
+
+> 演示视频：[[MC 命令] 载具引擎（VVE）演示视频](https://www.bilibili.com/video/BV1yU4y1k7Ag/)
+
+受限于当时的原版命令技术，性能压力成为 VVE 1 的主要瓶颈。当时在游戏中几乎只能实时运行 1 ~ 3 辆载具。
+
+### VVE 2：展示实体刚体
+
+VVE 2 诞生于一年后的 Minecraft 1.19.4 时代，此时一项重要的技术更新出现了：展示实体。VVE 2 探索了基于展示实体的刚体模拟技术，实现了球陀螺状刚体的碰撞、着陆、摩擦等复杂效果，并提出了 VVE 的重要概念：碰撞点模型。
+
+> 开发日志：[[MC 命令] 刚体物理引擎 VVE 2.0 开发日志](https://www.bilibili.com/video/BV13j411o7wN/)
+
+VVE 2 没有支持惯性张量计算，也不支持模拟载具。性能仍然是 VVE 2 实用化的瓶颈：当时最多只能实时模拟 10 ~ 20 个刚体。
