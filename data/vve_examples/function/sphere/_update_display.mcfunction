@@ -1,0 +1,8 @@
+#vve_examples:sphere/_update_display
+# 更新展示设置
+# 传入sphere实例为执行者
+
+function vve:cube/_update_display
+
+execute store result storage math:io scale[] float 0.0002 run scoreboard players get a int
+execute on passengers run data modify entity @s transformation.scale set from storage math:io scale

@@ -2,7 +2,8 @@
 # vve:test/explode/tnt/_new调用
 
 #data modify storage vve:io run_func set value "vve:test/explode/tnt/read_block"
-data modify storage vve:io run_func set value "vve:test/explode/tnt/read_block_object"
+#data modify storage vve:io run_func set value "vve:test/explode/tnt/read_block_object"
+data modify storage vve:io run_func set value "vve:test/explode/tnt/read_block_object_1"
 data modify storage vve:io over_func set value "vve:test/explode/tnt/read_over"
 execute at @s as 0-0-0-0-0 run tp @s ~-3 ~-3 ~-3
 execute at @s as 0-0-0-0-0 positioned ~3 ~3 ~3 run function vve:block_reader/task/_corner_list

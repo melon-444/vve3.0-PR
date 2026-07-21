@@ -1,4 +1,0 @@
-#$(module_prefix)bounce_type_4
-# $(module_prefix)bounce调用
-
-playsound minecraft:block.honey_block.step player @a ~ ~ ~ 1.0 1.5

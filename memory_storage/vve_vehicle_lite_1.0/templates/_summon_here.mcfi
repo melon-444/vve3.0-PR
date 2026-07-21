@@ -1,0 +1,11 @@
+#$(module_prefix)_summon_here
+# 聊天栏快捷生成
+# 传入执行位置
+# 传入执行朝向
+
+data modify storage $(project_name):io input set from storage $(project_name):class $(module_name)_plate
+function $(module_prefix)_proj
+execute positioned ~ ~2 ~ rotated ~ 0.0 as @e[tag=math_marker,limit=1] run function vve:object/_anchor_to
+function $(module_prefix)_model
+data modify storage $(project_name):io input set from storage $(project_name):io result
+execute positioned ~ ~2 ~ run function $(module_prefix)_new

@@ -6,6 +6,8 @@ scoreboard players add global_sim_mod int 1
 
 # 手动添加要执行的tick函数
 execute as @e[tag=vve_test_car] run function vve_examples:test_car/main_c
+execute as @e[tag=vve_examples_green_car] run function vve_examples:green_car/main_c
+execute as @e[tag=vve_examples_test_boat] run function vve_examples:test_boat/main_c
 
 # 回调tick函数
 execute if data storage vve:io tick_funcs[0] run function vve:simulator/_run_tick_funcs

@@ -1,0 +1,12 @@
+#vve_examples:skip_stone/doc.mcfo
+
+# skip_stone临时对象
+_this:{
+	mass:<mass,int,1>,
+	center:{
+		<x,int,1w>, <y,int,1w>, <z,int,1w>
+	},
+	velocity:{
+		<vx,int,1w>, <vy,int,1w>, <vz,int,1w>
+	}
+}

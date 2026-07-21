@@ -1,0 +1,4 @@
+#$(module_prefix)sound/bounce_type_2
+# $(module_prefix)sound/bounce调用
+
+playsound minecraft:block.sand.step player @a ~ ~ ~ 1.0 1.5

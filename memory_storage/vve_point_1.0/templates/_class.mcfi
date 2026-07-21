@@ -1,0 +1,9 @@
+#$(module_prefix)_class
+# 生成预设静态数据模板
+
+function $(module_prefix)_zero
+scoreboard players set inp int 0
+execute positioned 0.0 0.0 0.0 rotated 0.0 0.0 as 0-0-0-0-0 run function vve:point/_anchor_to
+scoreboard players set mass int 1
+function $(module_prefix)_model
+data modify storage $(project_name):class $(module_name)_plate set from storage $(project_name):io result

@@ -11,12 +11,6 @@ scoreboard players operation sstemp_abs_u int += sstemp_s0 int
 scoreboard players operation sstemp_abs_v int += sstemp_s1 int
 scoreboard players operation sstemp_abs_w int += sstemp_s2 int
 
-#scoreboard players set test int 1
-#tellraw @a "---"
-#tellraw @a ["sstemp_abs_u: ", {"score":{"name":"sstemp_abs_u","objective":"int"}}]
-#tellraw @a ["sstemp_abs_v: ", {"score":{"name":"sstemp_abs_v","objective":"int"}}]
-#tellraw @a ["sstemp_abs_w: ", {"score":{"name":"sstemp_abs_w","objective":"int"}}]
-
 execute if score sstemp_abs_u int <= sstemp_abs_v int run function vve:cube/response_branch_0
 execute if score sstemp_abs_u int > sstemp_abs_v int run function vve:cube/response_branch_1
 

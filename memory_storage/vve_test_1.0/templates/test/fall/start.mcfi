@@ -19,7 +19,7 @@ data modify storage $(project_name):io input set from storage $(project_name):io
 data modify entity @e[tag=math_marker,limit=1] Pos set from storage $(project_name):io input.center
 execute at @e[tag=math_marker,limit=1] run function $(module_prefix)_new
 tag @e[tag=result,limit=1] add test
-tag @e[tag=result,limit=1] remove $(module_name)
+tag @e[tag=result,limit=1] remove $(project_name)_$(module_name)
 
 execute as @e[tag=result,limit=1] run function marker_control:data/_get
 

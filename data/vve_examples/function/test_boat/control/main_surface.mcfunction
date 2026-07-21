@@ -1,0 +1,19 @@
+#vve_examples:test_boat/control/main_surface
+# vve_examples:test_boat/main_c调用
+
+scoreboard players operation inp int = backward_power int
+scoreboard players operation inp int /= 10 int
+execute if score input_s int matches 1 run function vve:vehicle/engine/_set_power
+scoreboard players operation inp int = forward_power int
+scoreboard players operation inp int /= 10 int
+execute if score input_w int matches 1 run function vve:vehicle/engine/_set_power
+scoreboard players set inp int 0
+execute if score input_w int matches 0 if score input_s int matches 0 run function vve:vehicle/engine/_set_power
+
+scoreboard players operation r int = rotation_r int
+scoreboard players set sign int 1
+execute if score input_a int matches 1 if score input_d int matches 0 as 0-0-0-0-0 run function vve:vehicle/_set_rotation
+scoreboard players set sign int -1
+execute if score input_d int matches 1 if score input_a int matches 0 as 0-0-0-0-0 run function vve:vehicle/_set_rotation
+scoreboard players set sign int 0
+execute if score input_a int matches 0 if score input_d int matches 0 as 0-0-0-0-0 run function vve:vehicle/_set_rotation

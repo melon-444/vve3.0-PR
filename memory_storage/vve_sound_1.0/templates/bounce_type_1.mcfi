@@ -1,4 +1,0 @@
-#$(module_prefix)bounce_type_1
-# $(module_prefix)bounce调用
-
-playsound minecraft:block.glass.fall player @a ~ ~ ~ 1.0 1.5

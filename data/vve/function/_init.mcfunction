@@ -19,6 +19,7 @@ function vve:_consts
 function vve:point/init
 function vve:block/init
 function vve:object/init
+function vve:material/init
 function vve:shift/init
 function vve:impulse/init
 function vve:friction/init

@@ -1,0 +1,5 @@
+#$(module_prefix)_del_nearest
+# 聊天栏快捷删除
+# 输入执行位置
+
+execute as @e[tag=$(project_name)_$(module_name),limit=1,sort=nearest] run function $(module_prefix)_del

@@ -20,7 +20,7 @@ scoreboard players set surface_response int 0
 # ...
 execute as @e[tag=vve_material_box,dx=0,dy=0,dz=0] positioned ~-0.9999 ~-0.9999 ~-0.9999 if entity @s[dx=0,dy=0,dz=0] run function vve:call_material
 execute if score material_response int matches 1.. run return fail
-execute positioned ~ ~-100.0 ~ as @e[tag=vve_large_material,distance=..100] positioned ~ ~100.0 ~ run function vve:call_material
+execute positioned ~ ~-128.0 ~ as @e[tag=vve_large_material,distance=..128] positioned ~ ~128.0 ~ run function vve:call_material
 execute if score material_response int matches 1.. run return fail
 
 # 流体介质

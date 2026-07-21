@@ -1,0 +1,28 @@
+#vve_examples:green_car/_print_as
+# 打印实例数据
+
+tellraw @a ["_entity: ", "{"]
+tellraw @a ["    ", "wheel_state: ", {"score":{"name":"@s", "objective":"wheel_state"}}, ","]
+tellraw @a ["    ", "control: ", "[", {"score":{"name":"@s", "objective":"forward_power"}}, ", " ,{"score":{"name":"@s", "objective":"backward_power"}}, ", " ,{"score":{"name":"@s", "objective":"rotation_r"}}, "]", ","]
+tellraw @a ["    ", "engine: ", "[", {"score":{"name":"@s", "objective":"target_power"}}, ", " ,{"score":{"name":"@s", "objective":"damp_x"}}, ", " ,{"score":{"name":"@s", "objective":"damp_v"}}, ", " ,{"score":{"name":"@s", "objective":"damp_k"}}, ", " ,{"score":{"name":"@s", "objective":"damp_b"}}, ", " ,{"score":{"name":"@s", "objective":"damp_f"}}, ", " ,{"score":{"name":"@s", "objective":"v_max"}}, "]", ","]
+tellraw @a ["    ", "mass: ", {"score":{"name":"@s", "objective":"mass"}}, ","]
+tellraw @a ["    ", "tensor: ", "[", {"score":{"name":"@s", "objective":"tensor_xx"}}, ", " ,{"score":{"name":"@s", "objective":"tensor_yy"}}, ", " ,{"score":{"name":"@s", "objective":"tensor_zz"}}, ", " ,{"score":{"name":"@s", "objective":"tensor_xy"}}, ", " ,{"score":{"name":"@s", "objective":"tensor_xz"}}, ", " ,{"score":{"name":"@s", "objective":"tensor_yz"}}, "]", ","]
+tellraw @a ["    ", "cube_shift_y: ", {"score":{"name":"@s", "objective":"cube_shift_y"}}, ","]
+tellraw @a ["    ", "nvec: ", "[", {"score":{"name":"@s", "objective":"nvec_x"}}, ", " ,{"score":{"name":"@s", "objective":"nvec_y"}}, ", " ,{"score":{"name":"@s", "objective":"nvec_z"}}, "]", ","]
+tellraw @a ["    ", "scale: ", "[", {"score":{"name":"@s", "objective":"scale_u"}}, ", " ,{"score":{"name":"@s", "objective":"scale_v"}}, ", " ,{"score":{"name":"@s", "objective":"scale_w"}}, "]", ","]
+tellraw @a ["    ", "center: ", "[", {"score":{"name":"@s", "objective":"x"}}, ", " ,{"score":{"name":"@s", "objective":"y"}}, ", " ,{"score":{"name":"@s", "objective":"z"}}, "]", ","]
+tellraw @a ["    ", "velocity: ", "[", {"score":{"name":"@s", "objective":"vx"}}, ", " ,{"score":{"name":"@s", "objective":"vy"}}, ", " ,{"score":{"name":"@s", "objective":"vz"}}, "]", ","]
+tellraw @a ["    ", "angular_vec: ", "[", {"score":{"name":"@s", "objective":"angular_x"}}, ", " ,{"score":{"name":"@s", "objective":"angular_y"}}, ", " ,{"score":{"name":"@s", "objective":"angular_z"}}, "]", ","]
+tellraw @a ["    ", "angular_len: ", {"score":{"name":"@s", "objective":"angular_len"}}, ","]
+tellraw @a ["    ", "uvw_coord: ", "{"]
+tellraw @a ["    ", "    ", "ivec: ", "[", {"score":{"name":"@s", "objective":"ivec_x"}}, ", " ,{"score":{"name":"@s", "objective":"ivec_y"}}, ", " ,{"score":{"name":"@s", "objective":"ivec_z"}}, "]", ","]
+tellraw @a ["    ", "    ", "jvec: ", "[", {"score":{"name":"@s", "objective":"jvec_x"}}, ", " ,{"score":{"name":"@s", "objective":"jvec_y"}}, ", " ,{"score":{"name":"@s", "objective":"jvec_z"}}, "]", ","]
+tellraw @a ["    ", "    ", "kvec: ", "[", {"score":{"name":"@s", "objective":"kvec_x"}}, ", " ,{"score":{"name":"@s", "objective":"kvec_y"}}, ", " ,{"score":{"name":"@s", "objective":"kvec_z"}}, "]"]
+tellraw @a ["    ", "}", ","]
+tellraw @a ["    ", "quaternion: ", "{"]
+tellraw @a ["    ", "    ", "xyzw: ", "[", {"score":{"name":"@s", "objective":"quat_x"}}, ", " ,{"score":{"name":"@s", "objective":"quat_y"}}, ", " ,{"score":{"name":"@s", "objective":"quat_z"}}, ", " ,{"score":{"name":"@s", "objective":"quat_w"}}, "]", ","]
+tellraw @a ["    ", "    ", "start_xyzw: ", "[", {"score":{"name":"@s", "objective":"quat_start_x"}}, ", " ,{"score":{"name":"@s", "objective":"quat_start_y"}}, ", " ,{"score":{"name":"@s", "objective":"quat_start_z"}}, ", " ,{"score":{"name":"@s", "objective":"quat_start_w"}}, "]", ","]
+tellraw @a ["    ", "    ", "orth_xyzw: ", "[", {"score":{"name":"@s", "objective":"quat_orth_x"}}, ", " ,{"score":{"name":"@s", "objective":"quat_orth_y"}}, ", " ,{"score":{"name":"@s", "objective":"quat_orth_z"}}, ", " ,{"score":{"name":"@s", "objective":"quat_orth_w"}}, "]", ","]
+tellraw @a ["    ", "    ", "phi: ", {"score":{"name":"@s", "objective":"quat_phi"}}]
+tellraw @a ["    ", "}"]
+tellraw @a "}"
