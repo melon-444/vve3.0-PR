@@ -2,6 +2,8 @@
 # 遍历顶点作为碰撞点，进行介质探测
 # 输出介质响应(各模块的临时对象)
 # 传入世界实体为执行者(不保证Pos位于执行位置)
+# 输出<stemp_cnt_0,int>
+# 输出<stemp_cnt_1,int>
 
 # 开始接收介质响应
 function vve:couple/_clear
@@ -208,8 +210,69 @@ execute if score grab_layer_response int matches 1 run function vve:object/_rece
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
 execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
+scoreboard players operation stemp_cnt_0 int = grab_layer_receiver_response int
 
+# 顶点5介质探测
+scoreboard players operation c_vx int -= sstemp_sx int
+scoreboard players operation c_vy int -= sstemp_sy int
+scoreboard players operation c_vz int -= sstemp_sz int
+execute store result storage math:io xyz[0] double 0.0001 run scoreboard players operation c_x int -= sstemp_jx int
+execute store result storage math:io xyz[1] double 0.0001 run scoreboard players operation c_y int -= sstemp_jy int
+execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int -= sstemp_jz int
+data modify entity @s Pos set from storage math:io xyz
+execute at @s run function vve:_detect_material
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
+execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
+scoreboard players operation friction_receiver_response int < friction_response int
+execute if score shift_response int matches 1 run function vve:object/_receive_shift
+execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
 
+# 顶点6介质探测
+scoreboard players operation c_vx int -= sstemp_tx int
+scoreboard players operation c_vy int -= sstemp_ty int
+scoreboard players operation c_vz int -= sstemp_tz int
+execute store result storage math:io xyz[0] double 0.0001 run scoreboard players operation c_x int -= sstemp_kx int
+execute store result storage math:io xyz[1] double 0.0001 run scoreboard players operation c_y int -= sstemp_ky int
+execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int -= sstemp_kz int
+data modify entity @s Pos set from storage math:io xyz
+execute at @s run function vve:_detect_material
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
+execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
+scoreboard players operation friction_receiver_response int < friction_response int
+execute if score shift_response int matches 1 run function vve:object/_receive_shift
+execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
+
+# 顶点7介质探测
+scoreboard players operation c_vx int += sstemp_rx int
+scoreboard players operation c_vy int += sstemp_ry int
+scoreboard players operation c_vz int += sstemp_rz int
+execute store result storage math:io xyz[0] double 0.0001 run scoreboard players operation c_x int += sstemp_ix int
+execute store result storage math:io xyz[1] double 0.0001 run scoreboard players operation c_y int += sstemp_iy int
+execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int += sstemp_iz int
+data modify entity @s Pos set from storage math:io xyz
+execute at @s run function vve:_detect_material
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
+execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
+scoreboard players operation friction_receiver_response int < friction_response int
+execute if score shift_response int matches 1 run function vve:object/_receive_shift
+execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
+
+# 顶点8介质探测
+scoreboard players operation c_vx int += sstemp_tx int
+scoreboard players operation c_vy int += sstemp_ty int
+scoreboard players operation c_vz int += sstemp_tz int
+execute store result storage math:io xyz[0] double 0.0001 run scoreboard players operation c_x int += sstemp_kx int
+execute store result storage math:io xyz[1] double 0.0001 run scoreboard players operation c_y int += sstemp_ky int
+execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int += sstemp_kz int
+data modify entity @s Pos set from storage math:io xyz
+execute at @s run function vve:_detect_material
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
+execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
+scoreboard players operation friction_receiver_response int < friction_response int
+execute if score shift_response int matches 1 run function vve:object/_receive_shift
+execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
+scoreboard players operation stemp_cnt_1 int = grab_layer_receiver_response int
+scoreboard players operation stemp_cnt_1 int -= stemp_cnt_0 int
 
 # 结束接受介质响应
 function vve:object/_receive_over

@@ -14,7 +14,8 @@ execute if score shift_response int matches 1 run function vve:object/_apply_shi
 execute if score impulse_response int matches 1 as 0-0-0-0-0 run function vve:box_object/_apply_impulse
 function vve:object/_apply_friction
 # 姿态角速度修正
-execute if score grab_layer_response int matches 3.. if score grab_layer_receiver_v_norm int < grab_layer_regular_v int as 0-0-0-0-0 run function vve:object/_regular
+scoreboard players operation stemp_cnt_0 int > stemp_cnt_1 int
+execute if score stemp_cnt_0 int matches 3.. if score grab_layer_receiver_v_norm int < grab_layer_regular_v int as 0-0-0-0-0 run function vve:object/_regular
 # 运动同步
 function vve:object/_sync_motion
 function vve_examples:board/_store

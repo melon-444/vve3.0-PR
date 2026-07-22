@@ -2,6 +2,8 @@
 # 遍历顶点作为碰撞点，进行介质探测
 # 输出介质响应(各模块的临时对象)
 # 传入世界实体为执行者(不保证Pos位于执行位置)
+# 输出<stemp_cnt_0,int>
+# 输出<stemp_cnt_1,int>
 
 # 开始接收介质响应
 function vve:couple/_clear
@@ -212,6 +214,7 @@ execute if score grab_layer_response int matches 1 run function vve:object/_rece
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
 execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
+scoreboard players operation stemp_cnt_0 int = grab_layer_receiver_response int
 
 # 顶点5介质探测
 scoreboard players operation c_vx int -= sstemp_sx int
@@ -272,6 +275,8 @@ execute if score grab_layer_response int matches 1 run function vve:object/_rece
 scoreboard players operation friction_receiver_response int < friction_response int
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
 execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
+scoreboard players operation stemp_cnt_1 int = grab_layer_receiver_response int
+scoreboard players operation stemp_cnt_1 int -= stemp_cnt_0 int
 
 # 结束接受介质响应
 function vve:object/_receive_over

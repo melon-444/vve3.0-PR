@@ -1,0 +1,21 @@
+#$(module_prefix)main
+# $(module_prefix)tick调用
+# 实体对象主程序
+
+function $(module_prefix)_get
+# 运动学迭代
+execute as 0-0-0-0-0 run function vve:point/_iter_motion
+# 介质探测
+execute as 0-0-0-0-0 run function $(module_prefix)_iter_cpoints
+# 力学迭代
+scoreboard players operation vy int -= vve_gravity int
+# 介质响应
+execute if score shift_response int matches 1 run function vve:object/_apply_shift
+execute if score impulse_response int matches 1 run function vve:object/_apply_impulse_f
+function vve:object/_apply_friction
+# 运动同步
+function vve:point/_sync_motion
+function $(module_prefix)_store
+
+# 坐标安全
+execute unless score y int matches -640000..5120000 run function $(module_prefix)_del

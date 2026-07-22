@@ -1,0 +1,14 @@
+#$(module_prefix)_class
+# 生成预设静态数据模板
+
+function $(module_prefix)_zero
+execute positioned 0.0 0.0 0.0 rotated 0.0 0.0 as 0-0-0-0-0 run function vve:object/_anchor_to
+scoreboard players set scale_u int 10000
+scoreboard players set scale_v int 10000
+scoreboard players set scale_w int 20000
+scoreboard players set mass int 50
+function vve:cubox/_calc_shift
+scoreboard players set inp int 120
+function vve:cubox/_calc_tensor_i
+function $(module_prefix)_model
+data modify storage $(project_name):class $(module_name)_plate set from storage $(project_name):io result

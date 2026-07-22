@@ -3,10 +3,18 @@
 function vve:_consts
 function vve_examples:board/init
 
+# 实心介质摩擦系数
+scoreboard players set vve_grab_friction int 9700
+scoreboard players set vve_solid_friction int 9700
+scoreboard players set vve_grab_friction_tan int 4500
+scoreboard players set vve_solid_friction_tan int 4500
+# 使用函数y=1/(x+1)对比例x进行映射后得到的值
+scoreboard players set vve_solid_bounce_inv int 6896
+
 # 测试场地
 execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
-execute at @e[tag=math_marker,limit=1] run fill ~-3 ~ ~-2 ~3 ~5 ~2 air
-execute at @e[tag=math_marker,limit=1] run fill ~-3 ~-1 ~-2 ~3 ~-1 ~2 glass
+execute at @e[tag=math_marker,limit=1] run fill ~-6 ~ ~-2 ~3 ~5 ~2 air
+execute at @e[tag=math_marker,limit=1] run fill ~-6 ~-1 ~-2 ~3 ~-1 ~2 glass
 
 tag @e[tag=test] remove test
 
@@ -51,4 +59,4 @@ scoreboard players set test int -1
 scoreboard players set test_n int 0
 
 # 设置旋转
-execute as @e[tag=result,limit=1] at @s positioned ~5.0 ~5.0 ~5.0 run function vve:object/_rotate_here_as
+#execute as @e[tag=result,limit=1] at @s positioned ~5.0 ~5.0 ~5.0 run function vve:object/_rotate_here_as

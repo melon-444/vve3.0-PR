@@ -1,0 +1,21 @@
+#vve_examples:slime_block/main_l
+# vve_examples:slime_block/tick调用
+# 实体对象主程序
+
+function vve_examples:slime_block/_get
+# 运动学迭代
+execute as 0-0-0-0-0 run function vve:object/_iter_motion
+# 介质探测
+execute as 0-0-0-0-0 run function vve_examples:slime_block/_iter_cpoints_l
+# 力学迭代
+scoreboard players operation vy int -= vve_gravity int
+# 介质响应
+execute if score shift_response int matches 1 run function vve:object/_apply_shift
+execute if score impulse_response int matches 1 run function vve:object/_apply_impulse_f
+function vve:object/_apply_friction
+# 运动同步
+function vve:point/_sync_motion
+function vve_examples:slime_block/_store
+
+# 坐标安全
+execute unless score y int matches -640000..5120000 run function vve_examples:slime_block/_del

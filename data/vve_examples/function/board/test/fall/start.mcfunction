@@ -3,6 +3,14 @@
 function vve:_consts
 function vve_examples:board/init
 
+# 实心介质摩擦系数
+scoreboard players set vve_grab_friction int 9000
+scoreboard players set vve_solid_friction int 9000
+scoreboard players set vve_grab_friction_tan int 4500
+scoreboard players set vve_solid_friction_tan int 4500
+# 使用函数y=1/(x+1)对比例x进行映射后得到的值
+scoreboard players set vve_solid_bounce_inv int 6896
+
 # 测试场地
 execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
 execute at @e[tag=math_marker,limit=1] run fill ~-2 ~ ~-2 ~2 ~5 ~2 air
@@ -13,7 +21,7 @@ tag @e[tag=test] remove test
 # 生成测试程序实体
 data modify storage vve_examples:io input set from storage vve_examples:class board_plate
 function vve_examples:board/_proj
-execute as @e[tag=math_marker,limit=1] at @s positioned ~ ~4 ~ rotated 0.0 0.0 run function vve:object/_anchor_to
+execute as @e[tag=math_marker,limit=1] at @s positioned ~0.5 ~4 ~ rotated 0.0 0.0 run function vve:object/_anchor_to
 function vve_examples:board/_model
 data modify storage vve_examples:io input set from storage vve_examples:io result
 data modify entity @e[tag=math_marker,limit=1] Pos set from storage vve_examples:io input.center
@@ -37,4 +45,4 @@ scoreboard players set test int -1
 scoreboard players set test_n int 0
 
 # 设置旋转
-execute as @e[tag=result,limit=1] at @s positioned ~5.0 ~5.0 ~5.0 run function vve:object/_rotate_here_as
+execute as @e[tag=result,limit=1] at @s positioned ~5.0 ~0.0 ~5.0 run function vve:object/_rotate_here_as
