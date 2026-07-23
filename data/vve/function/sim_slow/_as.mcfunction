@@ -3,4 +3,4 @@
 # 输入执行实体
 
 tag @s add vve_sim_slow
-function vve:sim_slow/store
+function vve:sim_slow/_store

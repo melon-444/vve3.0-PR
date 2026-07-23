@@ -2,7 +2,6 @@
 # $(module_prefix)tick调用
 # 实体对象主程序
 
-tag @s remove vve_material_box
 function $(module_prefix)_get
 # 运动学迭代
 execute as 0-0-0-0-0 run function vve:object/_iter_motion
@@ -34,7 +33,6 @@ execute if score res int matches 1 run function vve:vehicle/engine/main
 # 运动同步
 function vve:object/_sync_motion
 function $(module_prefix)_store
-tag @s add vve_material_box
 
 # 坐标安全
 execute unless score y int matches -640000..5120000 run function $(module_prefix)_del
