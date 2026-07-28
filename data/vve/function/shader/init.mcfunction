@@ -19,10 +19,9 @@ scoreboard players set fakefov_linear_base int -67175424
 # psi一整圈：360° × 10000
 scoreboard players set psi_turn int 3600000
 scoreboard players set psi_half_turn int 1800000
-scoreboard players set const_256 int 256
 
 # 用于低位四舍五入
-scoreboard players set 256 int 256
+
 scoreboard players set -1 int -1
 scoreboard players set 64 int 64
 scoreboard players set 256 int 256
